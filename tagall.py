@@ -1,5 +1,4 @@
 from .. import loader, utils
-from asyncio import sleep, gather
 
 
 def register(cb):
