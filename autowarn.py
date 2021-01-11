@@ -5,7 +5,7 @@ class WelcomeMod(loader.Module):
     strings = {'name': 'AutoWarn'}
 
     async def welcomecmd(self, message):
-        """хуета ненужная"""
+        """хуета ненужная, не юзать"""
 
 
     async def watcher(self, message):
