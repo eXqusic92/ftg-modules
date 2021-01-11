@@ -8,10 +8,10 @@ def register(cb):
 
 class TagallMod(loader.Module):
     """Tag Module for Bar of Don Salieri"""
-    strings = {'name': 'Tag'}
+    strings = {'name': 'SalieriTag'}
 
     async def tagallcmd(self, event):
-        """Обычный тэг-модуль"""
+        """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text
         try:
             mentions = ""
@@ -36,7 +36,7 @@ class TagallMod(loader.Module):
                     mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + x.first_name + "</a>"
                 counter += 1
                 if counter == 1:
-                    await event.reply(mentions)
+                    await event.client.send_message(event.chat_id, mentions)
                     counter = 0
                     mentions = ""
             if counter == 0:
