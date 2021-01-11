@@ -10,7 +10,7 @@ class TagallMod(loader.Module):
     strings = {'name': 'SalieriTag'}
 
     async def tagallcmd(self, event):
-        """Тэг-модуль пидоров дл Bar of Don Salieri"""
+        """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text
         try:
             mentions = ""
