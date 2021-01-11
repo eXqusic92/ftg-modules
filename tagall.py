@@ -45,3 +45,5 @@ class TagallMod(loader.Module):
             await event.delete()
         except:
             return await event.client.send_message(event.chat_id, 'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]')
+
+
