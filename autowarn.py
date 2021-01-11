@@ -4,7 +4,7 @@
 # return id
 
 import asyncio
-from telethon import events
+from telethon import events, client
 
 @client.on(events.NewMessage(pattern='(?i)hello.+'))
 async def handler(event):
