@@ -21,6 +21,8 @@ class TagallMod(loader.Module):
         args_len = len(args)
         if int(args_len) > 1:
             text = " ".join(args[1:])
+        else:
+            text = None
 
         if args:
             count = int(args[0].strip())
