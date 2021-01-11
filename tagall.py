@@ -18,7 +18,8 @@ class TagallMod(loader.Module):
         counter = 0
         args = utils.get_args(event)
         chat = await event.get_input_chat()
-        if len(args) > 1:
+        args_len = len(args)
+        if int(args_len) > 1:
             text = " ".join(args[1:])
 
         if args:
