@@ -16,7 +16,7 @@ class TagallMod(loader.Module):
         counter = 0
         args = utils.get_args(message)
         chat = await message.get_input_chat()
-        async for x in message.client.iter_participants(chat, args[0]):
+        async for x in message.client.iter_participants(chat, 100):
             mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
             counter += 1
             if counter == 1:
