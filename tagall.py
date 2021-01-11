@@ -10,22 +10,22 @@ class TagallMod(loader.Module):
     """Tag Module for Bar of Don Salieri"""
     strings = {'name': 'Spam'}
 
-    async def tagallcmd(self, message):
+    async def tagallcmd(self, event):
         """Обычный тэг-модуль"""
         mentions = ""
         counter = 0
-        args = utils.get_args(message)
-        chat = await message.get_input_chat()
-        async for x in message.client.iter_participants(chat, 100):
+        args = utils.get_args(event)
+        chat = await event.get_input_chat()
+        async for x in event.client.iter_participants(chat, int(args[0])):
             mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
             counter += 1
             if counter == 1:
-                await message.reply(mentions)
+                await event.reply(mentions)
                 counter = 0
                 mentions = ""
         if counter == 0:
-            await message.delete()
+            await event.delete()
             return
-        await message.reply(mentions)
-        await message.delete()
+        await event.reply(mentions)
+        await event.delete()
         #return await message.client.send_message(message.chat_id, '.tagall [количество юзеров(не больше 100)]')
