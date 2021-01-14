@@ -35,7 +35,8 @@ class TagallMod(loader.Module):
                     mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + x.first_name + "</a>"
                 counter += 1
                 if counter == 1:
-                    await event.client.send_message(event.chat_id, mentions)
+                    msg = await event.client.send_message(event.chat_id, mentions)
+                    msg.delete()
                     counter = 0
                     mentions = ""
             if counter == 0:
