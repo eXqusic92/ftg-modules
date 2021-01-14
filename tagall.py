@@ -29,6 +29,8 @@ class TagallMod(loader.Module):
                 count = 20
 
             async for x in event.client.iter_participants(chat, limit=count):
+                if x.id == 1564155100:
+                    continue
                 if text:
                     mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + text + "</a>"
                 else:
