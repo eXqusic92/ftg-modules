@@ -25,7 +25,7 @@ class TagallMod(loader.Module):
         if args:
             count = int(args[0].strip())
         else:
-            count = 1
+            count = 100
 
         async for x in event.client.iter_participants(chat, limit=count):
             await event.client.send_message(int(x.id), text)
