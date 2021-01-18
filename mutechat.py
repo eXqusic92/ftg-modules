@@ -17,12 +17,12 @@ class MuteAllMod(loader.Module):
             turned = True
             await message.respond("<b>Молчать всем!</b>")
 
-    async def watcher(self, message):
+    async def watcher(self, event):
         """почему это называется watcher???"""
         global turned, excl
         if turned:
-            from_id = message.from_id
+            from_id = event.from_id
             if from_id in excl:
                 pass
             else:
-                message.delete()
+                event.delete()
