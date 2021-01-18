@@ -25,4 +25,4 @@ class MuteAllMod(loader.Module):
             if from_id in excl:
                 pass
             else:
-                event.delete()
+                await event.delete()
