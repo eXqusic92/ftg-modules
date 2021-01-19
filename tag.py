@@ -10,7 +10,7 @@ class TagallMod(loader.Module):
     """Tag Module for Bar of Don Salieri"""
     strings = {'name': 'Tt'}
 
-    async def tagallcmd(self, event):
+    async def tagcmd(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
         global users
         async for x in users:
