@@ -48,7 +48,7 @@ class WelcomeMod(loader.Module):
                     await message.client.send_message(1361873517, "Ммм.. Хорошая попытка сбежать, мой " + "<a href=\"tg://user?id=" + str(id) + "\">" + "друг" + "</a>")
                 elif id == vlad_id:
                     await message.reply("!Влад зассал ибо против него играют слишком сильные противники")
-                    await message.client.send_message(1361873517, "Пидорас дня и по совместительству ссыкло - " + "<a href=\"tg://user?id=" + str(id) + "\">" + "Влад" + "</a>")
+                    await message.client.send_message(1361873517, "Krasav4ik - " + "<a href=\"tg://user?id=" + str(id) + "\">" + "Влад" + "</a>")
                 else:
                     await message.client.send_message(-1001430533627, "!warn " + str(id) + " Лив из игры (Читать " + "<a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
                     await message.client.send_message(1361873517, "<b>[Leave/Warn] </b>Выдал варн " + "<a href=\"tg://user?id=" + str(id) + "\">" + "пиздюку" + "</a>" + " ибо нехуй ливать с катки как последнее ссыкло")
