@@ -1,6 +1,6 @@
 from .. import loader, utils
 
-turned = False
+turned = True
 
 class AutoJoinMod(loader.Module):
     """АвтоДжоин для бота Мафии"""
