@@ -15,14 +15,14 @@ class WelcomeMod(loader.Module):
             turned = False
             messagepin = await event.client.send_message(-1001430533627, "<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
             if messagepin1:
-                messagepin1.delete()
-            messagepin.pin()
+                await messagepin1.delete()
+            await messagepin.pin()
         else:
             turned = True
             messagepin1 = await event.client.send_message(-1001430533627, "<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
             if messagepin:
-                messagepin.delete()
-            messagepin1.pin()
+                await messagepin.delete()
+            await messagepin1.pin()
 
     async def watcher(self, message):
         """почему это называется watcher???"""
