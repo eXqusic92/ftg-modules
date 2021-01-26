@@ -18,7 +18,7 @@ class WelcomeMod(loader.Module):
         text = message.text.split("=")
         r = text[2].split('"')
         id = int(r[0])
-        userent = await message.event.get_entity(id)
+        userent = await message.client.get_entity(id)
         if userent.last_name == None:
             username = str(userent.first_name)
         elif userent.last_name and userent.first_name:
