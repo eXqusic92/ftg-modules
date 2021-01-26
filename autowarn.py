@@ -1,10 +1,11 @@
 from .. import loader, utils
 
 turned = True
-messagepin = 1
-messagepin1 = 1
+messagepin = None
+messagepin1 = None
+
 class WelcomeMod(loader.Module):
-    """Автоварн юзеров за Leave/AFK с использование GroupHelpBot"""
+    """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
     strings = {'name': 'AutoWarn'}
 
     async def sudnajacmd(self, event):
@@ -13,12 +14,14 @@ class WelcomeMod(loader.Module):
         if turned:
             turned = False
             messagepin = await event.respond("<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
-            messagepin1.delete()
+            if messagepin1:
+                messagepin1.delete()
             messagepin.pin()
         else:
             turned = True
             messagepin1 = await event.respond("<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
-            messagepin.delete()
+            if messagepin:
+                messagepin.delete()
             messagepin1.pin()
 
     async def watcher(self, message):
