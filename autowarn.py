@@ -12,12 +12,12 @@ class WelcomeMod(loader.Module):
         global turned, messagepin, messagepin1
         if turned:
             turned = False
-            messagepin = await event.respond("<b>Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
+            messagepin = await event.respond("<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
             messagepin1.delete()
             messagepin.pin()
         else:
             turned = True
-            messagepin1 = await event.edit("<b>Режим судной ночи окончен!! Правила снова действуют</b>")
+            messagepin1 = await event.respond("<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
             messagepin.delete()
             messagepin1.pin()
 
