@@ -6,11 +6,11 @@ messagepin1 = None
 sud_state = False
 
 
-class WelcomeMod(loader.Module):
+class ChsettingsMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
-    strings = {'name': 'Stg'}
+    strings = {'name': 'StgChanger'}
 
-    async def scmd(self, event):
+    async def sudnajacmd(self, event):
         """Вкл/выкл режим судной ночи"""
         global sud_state, messagepin, messagepin1
         x = await event.client.get_messages(1564155100, 3)

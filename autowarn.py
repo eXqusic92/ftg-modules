@@ -9,8 +9,8 @@ class WelcomeMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
     strings = {'name': 'AutoWarn'}
 
-    async def sudnajacmd(self, event):
-        """Вкл/выкл режим судной ночи"""
+    async def turncmd(self, event):
+        """Вкл/выкл автоварн"""
         global sud_state
         if sud_state:
             sud_state = False
@@ -18,33 +18,6 @@ class WelcomeMod(loader.Module):
         else:
             sud_state = True
             await event.respond("<b>Автоварн выключен</b>")
-        # global sud_state, messagepin, messagepin1
-        # x = await event.client.get_messages(1564155100, 3)
-        # if x[0].text == "1":
-        #     sud_state = True
-        # elif x[0].text == "0":
-        #     sud_state = False
-        #
-        # if sud_state:
-        #     messagepin = await event.client.send_message(-1001430533627, "<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
-        #     if messagepin1:
-        #         await messagepin1.delete()
-        #     await messagepin.pin()
-        #     await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
-        #     time.sleep(2)
-        #     await event.client.send_message(-1001430533627, "/cancel")
-        #     time.sleep(0.5)
-        #     await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
-        # else:
-        #     messagepin1 = await event.client.send_message(-1001430533627, "<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
-        #     if messagepin:
-        #         await messagepin.delete()
-        #     await messagepin1.pin()
-        #     await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
-        #     time.sleep(2)
-        #     await event.client.send_message(-1001430533627, "/cancel")
-        #     time.sleep(0.5)
-        #     await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
 
     async def watcher(self, message):
         """почему это называется watcher???"""
