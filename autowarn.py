@@ -1,8 +1,9 @@
 from .. import loader, utils
+import time
 
-turned = True
 messagepin = None
 messagepin1 = None
+sud_state = False
 
 class WelcomeMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
@@ -10,27 +11,43 @@ class WelcomeMod(loader.Module):
 
     async def sudnajacmd(self, event):
         """Вкл/выкл режим судной ночи"""
-        global turned, messagepin, messagepin1
-        if turned:
-            turned = False
+        global sud_state, messagepin, messagepin1
+        x = await event.client.get_messages(1564155100, 3)
+        if x[0].text == "1":
+            sud_state = True
+        elif x[0].text == "0":
+            sud_state = False
+
+        if sud_state:
+            await x[0].edit("1")
             messagepin = await event.client.send_message(-1001430533627, "<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
             if messagepin1:
                 await messagepin1.delete()
             await messagepin.pin()
+            await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
+            time.sleep(2)
+            await event.client.send_message(-1001430533627, "/cancel")
+            time.sleep(0.5)
+            await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
         else:
-            turned = True
+            await x[0].edit("0")
             messagepin1 = await event.client.send_message(-1001430533627, "<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
             if messagepin:
                 await messagepin.delete()
             await messagepin1.pin()
+            await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
+            time.sleep(2)
+            await event.client.send_message(-1001430533627, "/cancel")
+            time.sleep(0.5)
+            await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
 
     async def watcher(self, message):
         """почему это называется watcher???"""
-        global turned
-        admin_ids = [725431547, 895755815, 540902565, 883140642, 1482857182, 754756140, 491255683, 1001187772, 198119497, 890602515]
+        global sud_state
+        admin_ids = [725431547, 895755815, 540902565, 883140642, 754756140, 491255683, 1001187772, 198119497, 890602515, 662737931]
         souch_ids = [1564155100, 504225012]
         vlad_id = 508169464
-        if turned:
+        if not sud_state:
             text = message.text.split("=")
             r = text[2].split('"')
             id = int(r[0])
