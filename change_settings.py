@@ -1,6 +1,8 @@
 from .. import loader, utils
 import time
 
+messagepin = None
+messagepin1 = None
 sud_state = False
 
 
@@ -10,7 +12,33 @@ class WelcomeMod(loader.Module):
 
     async def msgcmd(self, event):
         """Вкл/выкл режим судной ночи"""
-        pass
+        global sud_state, messagepin, messagepin1
+        x = await event.client.get_messages(1564155100, 3)
+        if x[0].text == "1":
+            sud_state = True
+        elif x[0].text == "0":
+            sud_state = False
+
+        if not sud_state:
+            messagepin = await event.client.send_message(-1001430533627, "<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
+            if messagepin1:
+                await messagepin1.delete()
+            await messagepin.pin()
+            await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
+            time.sleep(2)
+            await event.client.send_message(-1001430533627, "/cancel")
+            time.sleep(0.5)
+            await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
+        else:
+            messagepin1 = await event.client.send_message(-1001430533627, "<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
+            if messagepin:
+                await messagepin.delete()
+            await messagepin1.pin()
+            await event.client.send_message(-1001430533627, "<b>Меняю настройки игры... Не начинайте игру в ближайшие 30 секунд</b>")
+            time.sleep(2)
+            await event.client.send_message(-1001430533627, "/cancel")
+            time.sleep(0.5)
+            await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
 
     async def watcher(self, message):
         """кто прочитал тот воскресе"""
@@ -20,7 +48,7 @@ class WelcomeMod(loader.Module):
             sud_state = True
         elif x[0].text == "0":
             sud_state = False
-        if 'хотите' in message.raw_text.split() and 'изменить' in message.raw_text.split():
+        if 'изменить' in message.raw_text.split():
             if sud_state:
                 await message.click(data=b'config -1001430533627 misc')
                 time.sleep(0.6)
