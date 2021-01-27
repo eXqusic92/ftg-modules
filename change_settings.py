@@ -20,8 +20,8 @@ class WelcomeMod(loader.Module):
             sud_state = True
         elif x[0].text == "0":
             sud_state = False
-
-        if 'хотите' in message.raw_text.split():
+        from_id = message.from_id
+        if 'хотите' in message.raw_text.split() and 'изменить' in message.raw_text.split():
             if sud_state:
                 await message.click(data=b'config -1001430533627 misc')
                 time.sleep(0.6)
