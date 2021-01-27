@@ -11,6 +11,13 @@ class WelcomeMod(loader.Module):
 
     async def sudnajacmd(self, event):
         """Вкл/выкл режим судной ночи"""
+        global sud_state
+        if sud_state:
+            sud_state = False
+            await event.respond("<b>Автоварн включен</b>")
+        else:
+            sud_state = True
+            await event.respond("<b>Автоварн выключен</b>")
         # global sud_state, messagepin, messagepin1
         # x = await event.client.get_messages(1564155100, 3)
         # if x[0].text == "1":
@@ -42,11 +49,7 @@ class WelcomeMod(loader.Module):
     async def watcher(self, message):
         """почему это называется watcher???"""
         global sud_state
-        x = await message.client.get_messages(1564155100, 3)
-        if x[0].text == "1":
-            sud_state = True
-        elif x[0].text == "0":
-            sud_state = False
+
         admin_ids = [725431547, 895755815, 540902565, 883140642, 754756140, 491255683, 1001187772, 198119497, 890602515, 662737931]
         souch_ids = [1564155100, 504225012]
         vlad_id = 508169464

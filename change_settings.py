@@ -10,7 +10,7 @@ class WelcomeMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
     strings = {'name': 'Stg'}
 
-    async def msgcmd(self, event):
+    async def scmd(self, event):
         """Вкл/выкл режим судной ночи"""
         global sud_state, messagepin, messagepin1
         x = await event.client.get_messages(1564155100, 3)
@@ -48,7 +48,7 @@ class WelcomeMod(loader.Module):
             sud_state = True
         elif x[0].text == "0":
             sud_state = False
-        if 'изменить' in message.raw_text.split():
+        if 'параметры' in message.text.split():
             if sud_state:
                 await message.click(data=b'config -1001430533627 misc')
                 time.sleep(0.6)
