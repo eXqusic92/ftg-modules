@@ -19,7 +19,6 @@ class WelcomeMod(loader.Module):
             sud_state = False
 
         if sud_state:
-            await x[0].edit("1")
             messagepin = await event.client.send_message(-1001430533627, "<b>!Судная ночь началась!!! Сейчас никакие правила не действуют!!!</b>")
             if messagepin1:
                 await messagepin1.delete()
@@ -30,7 +29,6 @@ class WelcomeMod(loader.Module):
             time.sleep(0.5)
             await event.client.send_message(-1001430533627, "/settings@TrueMafiaBlackBot")
         else:
-            await x[0].edit("0")
             messagepin1 = await event.client.send_message(-1001430533627, "<b>!Режим судной ночи окончен!! Правила снова действуют</b>")
             if messagepin:
                 await messagepin.delete()
