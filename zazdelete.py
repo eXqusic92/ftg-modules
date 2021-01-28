@@ -4,8 +4,8 @@ zaz_id = [1263064901, 1169085389, 992657608, 803468136, 1362911415, 1302580284, 
 
 
 class ZazDeleteMod(loader.Module):
-    """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
-    strings = {'name': 'AutoWarn'}
+    """Авто-удаление сообщений Зазывала tag-bot"""
+    strings = {'name': 'ZazDelete'}
 
     async def watcher(self, message):
         """Авто-удаление сообщений Зазывала tag-bot"""
