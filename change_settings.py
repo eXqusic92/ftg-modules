@@ -88,6 +88,8 @@ class ChsettingsMod(loader.Module):
                 time.sleep(0.6)
                 await x[0].edit("0")
                 await message.client.send_message(-1001430533627, "<b>Настройки изменены. Можно играть!</b>")
+                time.sleep(0.2)
+                await message.client.send_message(-1001430533627, "анрег")
             else:
                 await message.click(data=b'config -1001430533627 misc')
                 time.sleep(0.6)
@@ -127,3 +129,5 @@ class ChsettingsMod(loader.Module):
                 time.sleep(0.6)
                 await x[0].edit("1")
                 await message.client.send_message(-1001430533627, "<b>Настройки изменены. Можно играть!</b>")
+                time.sleep(0.2)
+                await message.client.send_message(-1001430533627, "анрег")

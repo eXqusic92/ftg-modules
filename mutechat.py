@@ -1,4 +1,5 @@
 from .. import loader, utils
+import time
 
 turned = False
 excl = [508169464, 1564155100]
@@ -27,9 +28,13 @@ class MuteAllMod(loader.Module):
             if turned:
                 turned = False
                 await event.respond("<b>Эти жалкие людишки снова могут говорить!</b>")
+                time.sleep(0.2)
+                await event.respond("анрег")
             else:
                 turned = True
                 await event.respond("<b>Молчать всем!</b>")
+                time.sleep(0.2)
+                await event.respond("анрег")
         if turned:
             if from_id in excl:
                 pass

@@ -1,4 +1,5 @@
 from .. import loader, utils
+import time
 
 
 def register(cb):
@@ -43,8 +44,12 @@ class TagallMod(loader.Module):
                     mentions = ""
             if counter == 0:
                 await event.delete()
+                time.sleep(0.2)
+                await event.respond("анрег")
                 return
             await event.reply(mentions)
             await event.delete()
         except:
             await event.client.send_message(event.chat_id, 'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]')
+            time.sleep(0.2)
+            await event.respond("анрег")
