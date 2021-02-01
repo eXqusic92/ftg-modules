@@ -5,6 +5,7 @@ messagepin = None
 messagepin1 = None
 sud_state = False
 
+
 class WelcomeMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
     strings = {'name': 'AutoWarn'}
@@ -46,22 +47,22 @@ class WelcomeMod(loader.Module):
                 if 'бу-у-у-у-ду' in message.raw_text.split():
                     if uid in admin_ids:
                         await message.reply("!Вот петушара, админ, ещё и АФКшит...")
-                        await message.client.send_message(1361873517, "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>" + " сидит в афк псина")
+                        await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     elif uid in souch_ids:
                         await message.reply("!Уважаю")
-                        await message.client.send_message(1361873517, "Респект и уважение этому человеку " + "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>")
+                        await message.client.send_message(1361873517, f"Респект и уважение этому человеку <a href=\"tg://user?id={str(uid)}\">{username}</a>")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     elif uid == vlad_id:
                         await message.reply("!Блядь, я тебя захуярю")
-                        await message.client.send_message(1361873517, "Блять" + "<a href=\"tg://user?id=" + str(uid) + "\">" + "Влад" + "</a>" + " хули ты сам сидишь и дрочеш в группе, а на других орёшь что они афк? А?А?А?А?")
+                        await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     else:
-                        await message.client.send_message(-1001430533627, "!warn " + str(uid) + " AFK (Читать " + "<a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                        await message.client.send_message(1361873517, "<b>[AFK/Warn] </b>Выдал варн " + "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>" + " ибо нехуй сидеть в афк")
+                        await message.client.send_message(-1001430533627, f"!warn {str(uid)} AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
+                        await message.client.send_message(1361873517, f"<b>[AFK/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк")
                         time.sleep(0.2)
                         await message.respond("анрег")
 
@@ -74,20 +75,19 @@ class WelcomeMod(loader.Module):
                         username = str(userent.last_name)
                     if uid in admin_ids:
                         await message.reply("!Нахуй ливаешь, долбоёб?")
-                        await message.client.send_message(1361873517, "Ало " + "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>" + " ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.")
+                        await message.client.send_message(1361873517, f"Ало <a href=\"tg://user?id={str(uid)}\">{username}</a> ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     elif uid in souch_ids:
                         await message.reply("!Ну и пошёл нахуй отсюдава")
-                        await message.client.send_message(1361873517, "Ммм.. Хорошая попытка сбежать, " + "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>")
+                        await message.client.send_message(1361873517, f"Ммм.. Хорошая попытка сбежать, <a href=\"tg://user?id={str(uid)}\">{username}</a>")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     elif uid == vlad_id:
                         await message.reply("!Влад зассал ибо против него играют слишком сильные противники")
-                        await message.client.send_message(1361873517, "Krasav4ik - " + "<a href=\"tg://user?id=" + str(uid) + "\">" + "Влад" + "</a>")
+                        await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>")
                         time.sleep(0.2)
                         await message.respond("анрег")
                     else:
-                        await message.client.send_message(-1001430533627, "!warn " + str(uid) + " Лив из игры (Читать " + "<a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                        await message.client.send_message(1361873517, "<b>[Leave/Warn] </b>Выдал варн " + "<a href=\"tg://user?id=" + str(uid) + "\">" + username + "</a>" + " ибо нехуй ливать с катки как последнее ссыкло")
-
+                        await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
+                        await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло")
