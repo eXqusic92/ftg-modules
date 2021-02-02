@@ -7,4 +7,4 @@ class MuteAllMod(loader.Module):
     async def watcher(self, event):
         """почему это называется watcher???"""
         if 'подарков' in event.raw_text.split():
-            event.click()
+            await event.click()
