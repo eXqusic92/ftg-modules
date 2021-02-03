@@ -2,7 +2,6 @@ import telethon
 from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest
 
-# Use your own values from my.telegram.org
 api_id = 2196711
 api_hash = '5668721b41aa4a8fbaa0b2939bb7960c'
 client = TelegramClient('anon', api_id, api_hash)

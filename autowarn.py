@@ -67,29 +67,37 @@ class WelcomeMod(loader.Module):
                         await message.respond("анрег")
 
                 if 'гнетущей' in message.raw_text.split():
-                    if userent.last_name is None:
-                        username = str(userent.first_name)
-                    elif userent.last_name and userent.first_name:
-                        username = str(userent.first_name) + " " + str(userent.last_name)
+                    msgs = []
+                    x = await message.client.get_messages(-1001430533627, 15)
+                    for msg in x:
+                        msgs.append(msg.raw_text)
+
+                    if msgs.count(message.raw_text) > 1:
+                        pass
                     else:
-                        username = str(userent.last_name)
-                    if uid in admin_ids:
-                        await message.reply("!Нахуй ливаешь, долбоёб?")
-                        await message.client.send_message(1361873517, f"Ало <a href=\"tg://user?id={str(uid)}\">{username}</a> ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    elif uid in souch_ids:
-                        await message.reply("!Ну и пошёл нахуй отсюдава")
-                        await message.client.send_message(1361873517, f"Ммм.. Хорошая попытка сбежать, <a href=\"tg://user?id={str(uid)}\">{username}</a>")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    elif uid == vlad_id:
-                        await message.reply("!Влад зассал ибо против него играют слишком сильные противники")
-                        await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    else:
-                        await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                        await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
+                        if userent.last_name is None:
+                            username = str(userent.first_name)
+                        elif userent.last_name and userent.first_name:
+                            username = str(userent.first_name) + " " + str(userent.last_name)
+                        else:
+                            username = str(userent.last_name)
+                        if uid in admin_ids:
+                            await message.reply("!Нахуй ливаешь, долбоёб?")
+                            await message.client.send_message(1361873517, f"Ало <a href=\"tg://user?id={str(uid)}\">{username}</a> ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.")
+                            await asyncio.sleep(0.2)
+                            await message.respond("анрег")
+                        elif uid in souch_ids:
+                            await message.reply("!Ну и пошёл нахуй отсюдава")
+                            await message.client.send_message(1361873517, f"Ммм.. Хорошая попытка сбежать, <a href=\"tg://user?id={str(uid)}\">{username}</a>")
+                            await asyncio.sleep(0.2)
+                            await message.respond("анрег")
+                        elif uid == vlad_id:
+                            await message.reply("!Влад зассал ибо против него играют слишком сильные противники")
+                            await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>")
+                            await asyncio.sleep(0.2)
+                            await message.respond("анрег")
+                        else:
+                            await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
+                            await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло")
+                            await asyncio.sleep(0.2)
+                            await message.respond("анрег")
