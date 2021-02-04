@@ -28,5 +28,5 @@ class admupdateMod(loader.Module):
         admin = self._db.get("admins", "ids", None)
         for aid in admin:
             usr = await event.client.get_entity(aid)
-            mentions += f"<a href=\"tg://user?id={usr.id}\">{usr.first_name}</a> - {usr.id}\n"
+            mentions += f"<a href=\"tg://user?id={usr.id}\">{usr.first_name}</a> - <code>{usr.id}</code>\n"
         await event.respond(mentions)
