@@ -19,5 +19,5 @@ class admupdateMod(loader.Module):
             admins.append(user.id)
         admins.remove(508169464)
         admins.remove(1564155100)
-        self._db.set(__name__, "admin_list", admins)
+        self._db.set("admins", "ids", admins)
         await event.respond("<b>Список админов успешно обновлён!</b>")
