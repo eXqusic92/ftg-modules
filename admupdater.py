@@ -21,3 +21,12 @@ class admupdateMod(loader.Module):
         admins.remove(1564155100)
         self._db.set("admins", "ids", admins)
         await event.respond("<b>Список админов успешно обновлён!</b>")
+
+    async def admcmd(self, event):
+        """Получить список действующих админов"""
+        mentions = "<b>Список действующих админов:</b>\n"
+        admin = self._db.get("admins", "ids", None)
+        for aid in admin:
+            usr = await event.client.get_entity(aid)
+            mentions += f"<a href=\"tg://user?id={usr.id}\">{usr.first_name}</a> - {usr.id}\n"
+        await event.respond(mentions)
