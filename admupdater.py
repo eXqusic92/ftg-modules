@@ -12,16 +12,7 @@ class admupdateMod(loader.Module):
 
     async def updcmd(self, event):
         """.upd"""
-        message = await event.respond("<b>Обновляем список админов</b>")
-        await event.delete()
-        await asyncio.sleep(0.6)
-        await message.edit("<b>Обновляем список админов</b>")
-        await asyncio.sleep(0.6)
-        await message.edit("<b>Обновляем список админов.</b>")
-        await asyncio.sleep(0.6)
-        await message.edit("<b>Обновляем список админов..</b>")
-        await asyncio.sleep(0.6)
-        await message.edit("<b>Обновляем список админов...</b>")
+        await event.respond("<b>Обновляем список админов</b>")
 
         admins = []
         async for user in event.client.iter_participants(event.chat_id, limit=50):
@@ -29,4 +20,4 @@ class admupdateMod(loader.Module):
         admins.remove(508169464)
         admins.remove(1564155100)
         self._db.set(__name__, "admin_list", admins)
-        await message.edit("<b>Список админов успешно обновлён!</b>")
+        await event.respond("<b>Список админов успешно обновлён!</b>")
