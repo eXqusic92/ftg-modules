@@ -6,6 +6,7 @@ class AutoInfoMod(loader.Module):
 
     async def watcher(self, event):
         """почему это называется watcher???"""
-        if 'инфо' == event.raw_text.lower():
+        chatid = event.chat_id
+        if 'инфо' == event.raw_text.lower() and chatid == -1001430533627:
             fromid = event.from_id
             await event.respond(f'!info {fromid}')
