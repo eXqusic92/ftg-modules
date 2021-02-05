@@ -1,5 +1,6 @@
 from .. import loader, utils
 import asyncio
+import datetime
 
 messagepin = None
 messagepin1 = None
@@ -9,6 +10,9 @@ sud_state = False
 class WelcomeMod(loader.Module):
     """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
     strings = {'name': 'AutoWarn'}
+
+    async def client_ready(self, client, db):
+        self._db = db
 
     async def turncmd(self, event):
         """Вкл/выкл автоварн"""
@@ -28,7 +32,13 @@ class WelcomeMod(loader.Module):
         """почему это называется watcher???"""
         global sud_state
 
-        admin_ids = [540902565, 883140642, 491255683, 895755815, 725431547, 690394127, 1106663428]
+        time = datetime.datetime.now().time().replace(microsecond=0)
+        date = datetime.datetime.now().day
+        month = datetime.datetime.now().month
+        year = datetime.datetime.now().year
+        timestamp = f'{time} | {date}.{month}.{year}'
+
+        admin_ids = self._db.get("admins", "ids", None)
         souch_ids = [1564155100, 504225012]
         vlad_id = 508169464
         if not sud_state:
@@ -47,22 +57,22 @@ class WelcomeMod(loader.Module):
                 if 'бу-у-у-у-ду' in message.raw_text.split():
                     if uid in admin_ids:
                         await message.reply("!Вот петушара, админ, ещё и АФКшит...")
-                        await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина")
+                        await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
                     elif uid in souch_ids:
                         await message.reply("!Уважаю")
-                        await message.client.send_message(1361873517, f"Респект и уважение этому человеку <a href=\"tg://user?id={str(uid)}\">{username}</a>")
+                        await message.client.send_message(1361873517, f"Респект и уважение этому человеку <a href=\"tg://user?id={str(uid)}\">{username}</a>\n\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
                     elif uid == vlad_id:
-                        await message.reply("!Блядь, я тебя захуярю")
-                        await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball")
+                        await message.reply("!Ладно")
+                        await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
                     else:
                         await message.client.send_message(-1001430533627, f"!warn {str(uid)} AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                        await message.client.send_message(1361873517, f"<b>[AFK/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк")
+                        await message.client.send_message(1361873517, f"<b>[AFK/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
 
@@ -83,21 +93,21 @@ class WelcomeMod(loader.Module):
                             username = str(userent.last_name)
                         if uid in admin_ids:
                             await message.reply("!Нахуй ливаешь, долбоёб?")
-                            await message.client.send_message(1361873517, f"Ало <a href=\"tg://user?id={str(uid)}\">{username}</a> ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.")
+                            await message.client.send_message(1361873517, f"Ало <a href=\"tg://user?id={str(uid)}\">{username}</a> ты зашёл в катку чтобы повыпендриваться? Так сиди до конца, а не ливай посреди катки как крыса.\n\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         elif uid in souch_ids:
                             await message.reply("!Ну и пошёл нахуй отсюдава")
-                            await message.client.send_message(1361873517, f"Ммм.. Хорошая попытка сбежать, <a href=\"tg://user?id={str(uid)}\">{username}</a>")
+                            await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> съебался с катки преждевременно.\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         elif uid == vlad_id:
-                            await message.reply("!Влад зассал ибо против него играют слишком сильные противники")
-                            await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>")
+                            await message.reply("!Ладно")
+                            await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>\n\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         else:
                             await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                            await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло")
+                            await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло\n\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
