@@ -98,7 +98,7 @@ class WelcomeMod(loader.Module):
                             await message.respond("анрег")
                         elif uid in souch_ids:
                             await message.reply("!Ну и пошёл нахуй отсюдава")
-                            await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> съебался с катки преждевременно.\n{timestamp}")
+                            await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> съебался с катки преждевременно.\n\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         elif uid == vlad_id:
