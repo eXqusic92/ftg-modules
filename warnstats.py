@@ -21,6 +21,6 @@ class WarnStatsMod(loader.Module):
 
 Статистика сброшена
 """
-        await event.respond(text)
+        await event.edit(text)
         self._db.set("warns", "afk", 0)
         self._db.set("warns", "leave", 0)
