@@ -75,6 +75,8 @@ class WelcomeMod(loader.Module):
                         await message.client.send_message(1361873517, f"<b>[AFK/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
+                        cnt = self._db.get("warns", "afk", 0)
+                        self._db.set("warns", "afk", cnt+1)
 
                 if 'гнетущей' in message.raw_text.split():
                     msgs = []
@@ -111,3 +113,5 @@ class WelcomeMod(loader.Module):
                             await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло\n\n{timestamp}")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
+                            cnt = self._db.get("warns", "leave", 0)
+                            self._db.set("warns", "leave", cnt + 1)
