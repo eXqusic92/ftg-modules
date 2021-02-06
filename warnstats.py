@@ -19,5 +19,6 @@ class WarnStatsMod(loader.Module):
 <i>За АФК - {afks}
 За лив - {leaves}</i>
 """
+        event.respond(text)
         self._db.set("warns", "afk", 0)
         self._db.set("warns", "leave", 0)
