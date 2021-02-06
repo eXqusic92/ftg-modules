@@ -18,6 +18,8 @@ class WarnStatsMod(loader.Module):
 
 <i>За АФК - {afks}
 За лив - {leaves}</i>
+
+Статистика сброшена
 """
         event.respond(text)
         self._db.set("warns", "afk", 0)
