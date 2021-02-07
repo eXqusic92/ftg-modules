@@ -2,8 +2,6 @@ from .. import loader, utils
 import asyncio
 import datetime
 
-messagepin = None
-messagepin1 = None
 sud_state = False
 
 
