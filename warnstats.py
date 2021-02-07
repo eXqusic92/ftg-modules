@@ -28,6 +28,7 @@ class WarnStatsMod(loader.Module):
                 text += f"{i} - {afk_list_sorted.get(i)}\n"
             text += f"<u>Всего за сегодня - {afk_count}</u>\n\n"
 
+        text += "<i>За лив:\n</i>"
         if len(leave_list_sorted) == 0:
             text += "Нету варнов\n\n"
         else:
