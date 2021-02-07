@@ -79,11 +79,11 @@ class WelcomeMod(loader.Module):
                         self._db.set("warns", "afk", cnt+1)
 
                         afk_list = self._db.get("afk", "warns")
-                        if uid in afk_list:
-                            afk_list[uid] = afk_list.get(uid) + 1
+                        if str(uid) in afk_list:
+                            afk_list[str(uid)] = afk_list.get(str(uid)) + 1
                             self._db.set("afk", "warns", afk_list)
                         else:
-                            afk_list = {**afk_list, uid: 1}
+                            afk_list = {**afk_list, str(uid): 1}
                             self._db.set("afk", "warns", afk_list)
 
                 if 'гнетущей' in message.raw_text.split():
@@ -125,9 +125,9 @@ class WelcomeMod(loader.Module):
                             self._db.set("warns", "leave", cnt + 1)
 
                             leave_list = self._db.get("leave", "warns")
-                            if uid in leave_list:
-                                leave_list[uid] = leave_list.get(uid) + 1
+                            if str(uid) in leave_list:
+                                leave_list[str(uid)] = leave_list.get(str(uid)) + 1
                                 self._db.set("leave", "warns", leave_list)
                             else:
-                                leave_list = {**leave_list, uid: 1}
+                                leave_list = {**leave_list, str(uid): 1}
                                 self._db.set("leave", "warns", leave_list)
