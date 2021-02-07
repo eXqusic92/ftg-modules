@@ -25,28 +25,14 @@ class WarnStatsMod(loader.Module):
             text += "Нету варнов\n\n"
         else:
             for i in afk_list_sorted:
-                userent = event.client.get_entity(int(i))
-                if userent.last_name is None:
-                    username = str(userent.first_name)
-                elif userent.last_name and userent.first_name:
-                    username = str(userent.first_name) + " " + str(userent.last_name)
-                else:
-                    username = str(userent.last_name)
-                text += f"{username} - {afk_list_sorted.get(i)}\n"
+                text += f"{i} - {afk_list_sorted.get(i)}\n"
             text += f"<u>Всего за сегодня - {afk_count}</u>\n\n"
 
         if len(leave_list_sorted) == 0:
             text += "Нету варнов\n\n"
         else:
             for i in leave_list_sorted:
-                userent = event.client.get_entity(int(i))
-                if userent.last_name is None:
-                    username = str(userent.first_name)
-                elif userent.last_name and userent.first_name:
-                    username = str(userent.first_name) + " " + str(userent.last_name)
-                else:
-                    username = str(userent.last_name)
-                text += f"{username} - {leave_list_sorted.get(i)}\n"
+                text += f"{i} - {leave_list_sorted.get(i)}\n"
             text += f"<u>Всего за сегодня - {leave_count}</u>"
         await event.edit(text)
         self._db.set("afk", "warns", {})
