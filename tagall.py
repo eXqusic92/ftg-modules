@@ -55,7 +55,7 @@ class TagallMod(loader.Module):
                     except:
                         count = 100
                         text = " ".join(mssg[1:])
-                start = event.client.send_message(chatid, "<b>Призыв участников начат</b>")
+                start = await event.client.send_message(chatid, "<b>Призыв участников начат</b>", reply_to=event)
                 async for x in event.client.iter_participants(chat, limit=count, aggressive=True):
                     if x.id in unreg:
                         continue
@@ -65,8 +65,8 @@ class TagallMod(loader.Module):
                         mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + x.first_name + "</a>"
                     counter += 1
                     if counter == 1:
-                        msg = await event.client.send_message(chatid, mentions, reply_to=start)
-                        if not msg.is_reply:
+                        msg = await event.client.send_message(chatid, mentions)
+                        if not start.is_reply:
                             await event.respond("<b>Призыв остановлен</b>")
                         await msg.delete()
                         counter = 0
