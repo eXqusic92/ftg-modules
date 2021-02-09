@@ -40,7 +40,10 @@ class WelcomeMod(loader.Module):
         souch_ids = [1564155100, 504225012]
         vlad_id = 508169464
         if not sud_state:
-            uid = message.entities[0].user_id
+            if 'пообещал' in message.raw_text.split():
+                uid = message.entities[1].user_id
+            else:
+                uid = message.entities[0].user_id
             userent = await message.client.get_entity(uid)
             if userent.last_name is None:
                 username = str(userent.first_name)
@@ -51,8 +54,8 @@ class WelcomeMod(loader.Module):
             chatid = message.chat_id
             fromid = message.from_id
 
-            if chatid == -1001430533627 and fromid == 761250017:
-                if 'бу-у-у-у-ду' in message.raw_text.split():
+            if chatid == -1001430533627 and (fromid == 761250017 or fromid == 1044037207):
+                if ('бу-у-у-у-ду' in message.raw_text.split()) or ('пообещал' in message.raw_text.split()):
                     if uid in admin_ids:
                         await message.reply("!Вот петушара, админ, ещё и АФКшит...")
                         await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
