@@ -30,6 +30,7 @@ class TagallMod(loader.Module):
         mssg = [x.lower() for x in mssg]
         admin_ids = self._db.get("admins", "ids", None)
         fromid = event.from_id
+        chatid = event.chat_id
         if (('калл' in mssg) or ('каллалл' in mssg) or ('каллал' in mssg) or ('каллактив' in mssg)) and (fromid in admin_ids):
             try:
                 unreg = [1564155100, 595975466]
@@ -65,8 +66,9 @@ class TagallMod(loader.Module):
                     counter += 1
                     if counter == 1:
                         if not event:
+                            await event.client.send_message(chatid, "<b>Призыв остановлен</b>")
                             break
-                        msg = await event.client.send_message(event.chat_id, mentions)
+                        msg = await event.client.send_message(chatid, mentions)
                         await msg.delete()
                         counter = 0
                         mentions = ""
