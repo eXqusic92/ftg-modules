@@ -55,7 +55,7 @@ class TagallMod(loader.Module):
                     except:
                         count = 100
                         text = " ".join(mssg[1:])
-                start = await event.client.send_message(chatid, "<b>Призыв участников начат</b>", reply_to=event)
+                start = await event.client.send_message(chatid, "<b>!Призыв участников начат</b>", reply_to=event)
                 async for x in event.client.iter_participants(chat, limit=count, aggressive=True):
                     if x.id in unreg:
                         continue
@@ -67,7 +67,7 @@ class TagallMod(loader.Module):
                     if counter == 1:
                         msg = await event.client.send_message(chatid, mentions)
                         if not start.is_reply:
-                            await event.respond("<b>Призыв остановлен</b>")
+                            await event.respond("<b>!Призыв остановлен</b>")
                         await msg.delete()
                         counter = 0
                         mentions = ""
@@ -79,6 +79,6 @@ class TagallMod(loader.Module):
                 await event.reply(mentions)
                 await event.delete()
             except Exception as e:
-                await event.client.send_message(event.chat_id, f'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
+                await event.client.send_message(event.chat_id, f'!Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
                 await asyncio.sleep(0.2)
                 await event.respond("анрег")
