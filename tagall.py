@@ -68,7 +68,7 @@ class TagallMod(loader.Module):
                         msg = await event.client.send_message(chatid, mentions)
                         if not start.is_reply:
                             await event.respond("<b>!Призыв остановлен</b>")
-                            break
+                            return
                         await msg.delete()
                         counter = 0
                         mentions = ""
