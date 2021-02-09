@@ -26,7 +26,8 @@ class TagallMod(loader.Module):
     async def watcher(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text, count
-        mssg = event.raw_text.split().lower()
+        mssg = event.raw_text.split()
+        mssg = [x.lower() for x in mssg]
         admin_ids = self._db.get("admins", "ids", None)
         fromid = event.from_id
         if (('калл' in mssg) or ('каллалл' in mssg) or ('каллал' in mssg) or ('каллактив' in mssg)) and (fromid in admin_ids):
