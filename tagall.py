@@ -1,5 +1,5 @@
 from .. import loader, utils
-import time
+import asyncio
 
 
 def register(cb):
@@ -14,6 +14,7 @@ class TagallMod(loader.Module):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text
         try:
+            unreg = [1564155100, 595975466]
             mentions = ""
             counter = 0
             args = utils.get_args(event)
@@ -30,7 +31,7 @@ class TagallMod(loader.Module):
                 count = 20
 
             async for x in event.client.iter_participants(chat, limit=count):
-                if x.id == 1564155100:
+                if x.id in unreg:
                     continue
                 if text:
                     mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + text + "</a>"
@@ -44,12 +45,12 @@ class TagallMod(loader.Module):
                     mentions = ""
             if counter == 0:
                 await event.delete()
-                time.sleep(0.2)
+                await asyncio.sleep(0.2)
                 await event.respond("анрег")
                 return
             await event.reply(mentions)
             await event.delete()
-        except:
-            await event.client.send_message(event.chat_id, 'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]')
-            time.sleep(0.2)
+        except Exception as e:
+            await event.client.send_message(event.chat_id, f'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
+            await asyncio.sleep(0.2)
             await event.respond("анрег")
