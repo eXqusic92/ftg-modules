@@ -1,6 +1,8 @@
 from .. import loader, utils
 import asyncio
 
+admins_id = [1660312191, 1564155100, 508169464, 570164843, 1500486325, 725431547,
+          690394127, 1106663428, 504225012, 895755815, 491255683, 883140642, 540902565, 1001187772, 1214704751]
 
 def register(cb):
     cb(TagallMod())
@@ -25,13 +27,13 @@ class TagallMod(loader.Module):
 
     async def watcher(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
-        global text, count
+        global text, count, admins_id
         mssg = event.raw_text.split()
         mssg = [x.lower() for x in mssg]
         # admin_ids = self._db.get("admins", "ids", None)
-        # fromid = event.from_id
+        fromid = event.from_id
         chatid = event.chat_id
-        if "к" in mssg:
+        if (mssg[0] == 'к') and (fromid in admins_id):
             try:
                 unreg = [1564155100, 595975466]
                 mentions = ""
