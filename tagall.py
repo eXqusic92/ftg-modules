@@ -55,10 +55,7 @@ class TagallMod(loader.Module):
                         mentions += "<a href=\"tg://user?id=" + str(x.id) + "\">" + x.first_name + "</a>"
                     counter += 1
                     if counter == 1:
-                        msg = await event.client.send_message(chatid, mentions, reply_to=start)
-                        if not msg.is_reply:
-                            await event.respond("<b>!Призыв остановлен</b>")
-                            return
+                        msg = await event.client.send_message(chatid, mentions)
                         await msg.delete()
                         counter = 0
                         mentions = ""
@@ -71,6 +68,6 @@ class TagallMod(loader.Module):
                 await event.delete()
             except Exception as e:
                 await event.client.send_message(event.chat_id,
-                                                f'!Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
+                                                f'!Ты еблан блять? Введи к [к-во юзеров]\n\n{e}')
                 await asyncio.sleep(0.2)
                 await event.client.send_message(chatid, "анрег")
