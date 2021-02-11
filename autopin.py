@@ -13,9 +13,8 @@ class AutoPinMod(loader.Module):
             if 'набор' in message.raw_text.split():
                 await message.pin()
                 return
-            if 'ветров' in message.raw_text.split():
-                x = await message.client.get_messages(-1001430533627, 100)
+            if ('ветров' in message.raw_text.split()) or ('Недостаточно' in message.raw_text.split()):
+                x = await message.client.get_messages(-1001430533627, limit=30, from_user=baku_id)
                 for msg in x:
                     if 'набор' in msg.raw_text.split():
                         await msg.delete()
-                        return

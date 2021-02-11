@@ -28,33 +28,23 @@ class TagallMod(loader.Module):
         global text, count
         mssg = event.raw_text.split()
         mssg = [x.lower() for x in mssg]
-        admin_ids = self._db.get("admins", "ids", None)
-        fromid = event.from_id
+        # admin_ids = self._db.get("admins", "ids", None)
+        # fromid = event.from_id
         chatid = event.chat_id
-        if (('калл' in mssg) or ('каллалл' in mssg) or ('каллал' in mssg) or ('каллактив' in mssg)) and (fromid in admin_ids):
+        if "к" in mssg:
             try:
                 unreg = [1564155100, 595975466]
                 mentions = ""
                 counter = 0
                 chat = await event.get_input_chat()
 
-                if len(mssg) == 1:
-                    count = 100
+                if len(event.raw_text.split()) == 2:
+                    count = int(event.raw_text.split()[1])
                     text = None
-                elif len(mssg) == 2:
-                    try:
-                        count = int(mssg[1])
-                        text = None
-                    except:
-                        count = 100
-                        text = str(mssg[1])
-                elif len(mssg) > 2:
-                    try:
-                        count = int(mssg[1])
-                        text = " ".join(mssg[1:])
-                    except:
-                        count = 100
-                        text = " ".join(mssg[1:])
+                else:
+                    count = int(event.raw_text.split()[1])
+                    text = " ".join(event.raw_text.split()[2:])
+
                 start = await event.client.send_message(chatid, "<b>!Призыв участников начат</b>")
                 async for x in event.client.iter_participants(chat, limit=count, aggressive=True):
                     if x.id in unreg:
@@ -80,6 +70,7 @@ class TagallMod(loader.Module):
                 await event.reply(mentions)
                 await event.delete()
             except Exception as e:
-                await event.client.send_message(event.chat_id, f'!Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
+                await event.client.send_message(event.chat_id,
+                                                f'!Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
                 await asyncio.sleep(0.2)
                 await event.client.send_message(chatid, "анрег")
