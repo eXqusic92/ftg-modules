@@ -72,8 +72,8 @@ class WelcomeMod(loader.Module):
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
                     else:
-                        await message.client.send_message(-1001430533627, f"!warn {str(uid)} AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                        await message.client.send_message(1361873517, f"<b>[AFK/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
+                        await message.client.send_message(-1001430533627, f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
+                        await message.client.send_message(1361873517, f"<b>[AFK/Mute] </b>Выдал мут <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
                         await asyncio.sleep(0.2)
                         await message.respond("анрег")
                         cnt = self._db.get("warns", "afk", 0)
