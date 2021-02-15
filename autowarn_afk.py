@@ -12,11 +12,11 @@ class AutoWarnforMuteMod(loader.Module):
         chatid = message.chat_id
         msg = message.raw_text.split()
         if (chatid == -1001430533627) and (fromid == 1044037207):
-            if '' in msg:
+            if 'длилась' in msg:
                 x = await client.get_participants(-1001430533627, limit=100, filter=ChannelParticipantsBanned)
                 for i in x:
                     muted.append(i.id)
                 for usr in message.entities:
                     if hasattr(usr, 'user_id'):
                         if usr.user_id in muted:
-                            await message.client.send_message(-1001430533627,)
+                            await message.client.send_message(-1001430533627, f"!warn {usr.user_id} Игра с мутом")
