@@ -16,7 +16,10 @@ class AutoWarnforMuteMod(loader.Module):
                 x = await client.get_participants(-1001430533627, limit=100, filter=ChannelParticipantsBanned)
                 for i in x:
                     muted.append(i.id)
+                for mid in muted:
+                    await message.client.send_message("me", "muted - " + str(mid))
                 for usr in message.entities:
                     if hasattr(usr, 'user_id'):
                         if usr.user_id in muted:
-                            await message.client.send_message(-1001430533627, f"!warn {usr.user_id} Игра с мутом")
+                            await message.client.send_message(-1001430533627, f"!warn {str(usr.user_id)} Игра с мутом")
+                            await message.client.send_message("me", str(usr.user_id))
