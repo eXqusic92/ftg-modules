@@ -1,10 +1,18 @@
 import requests
 from time import sleep
 from colorama import init, Fore
+from os import system, name
 
 init(autoreset=True)
 
 api_key = 'B30BeBB15955fB24463B8c904f72c5cd'
+
+
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 
 
 def get_balance():  # Получение баланса
@@ -55,32 +63,63 @@ def set_status_done(status_id):
     return done
 
 
-print(Fore.BLUE + "Ждем номер...")
 while True:
-    response = get_number()
-    if response == "NO_NUMBERS":
-        sleep(3)
-        pass
-    elif response == "NO_BALANCE":
-        print(Fore.RED + "Недостаточно средств")
-        exit()
-    else:
-        operation_id = response[0]
-        number = response[1]
-        print("Номер получен. ID операции: " + Fore.GREEN + f"{operation_id}." + Fore.RESET + " Номер телефона: " + Fore.GREEN + f"{number}")
-        break
-input("Подтвердите отправку смс (нажмите Enter)")
-print("Ждем код...")
-set_status(operation_id)
+    clear()
+    print("""
+    1. Проверить баланс
+    2. Проверить доступность номеров
+    3. Покупка номера
+    4. Выход
+    """)
+    inp = input("Выберите операцию - ")
+    print("\n")
+    if inp == "1":
+        print("Ваш баланс: " + Fore.MAGENTA + get_balance() + Fore.RESET + " руб.")
+        input("Нажмите Enter для продолжения...")
+    elif inp == "2":
+        print("Всего доступно номеров " + Fore.CYAN + "Telegram - " + Fore.GREEN + get_numbers_status())
+        input("Нажмите Enter для продолжения...")
+    elif inp == "3":
+        print(Fore.BLUE + "Ждем номер...")
+        while True:
+            response = get_number()
+            if response == "NO_NUMBERS":
+                sleep(3)
+                pass
+            elif response == "NO_BALANCE":
+                print(Fore.RED + "Недостаточно средств")
+                exit()
+            else:
+                operation_id = response[0]
+                number = response[1]
+                print("Номер получен. ID операции: " + Fore.GREEN + f"{operation_id}." + Fore.RESET + " Номер телефона: " + Fore.GREEN + f"{number}")
+                break
+        input("Подтвердите отправку смс (нажмите Enter)")
+        print("Ждем код...")
+        set_status(operation_id)
 
-while True:
-    if get_status(operation_id) == "STATUS_WAIT_CODE":
-        sleep(3)
-        pass
-    else:
-        code = get_status(operation_id)
-        print(f"Код получен - " + Fore.GREEN + f"{code}")
-        answer = input("Код верный? да/нет - ")
-        if answer == "да":
-            set_status_done(operation_id)
+        while True:
+            try:
+                if get_status(operation_id) == "STATUS_WAIT_CODE":
+                    sleep(3)
+                    pass
+                else:
+                    code = get_status(operation_id)
+                    print(f"Код получен - " + Fore.GREEN + f"{code}")
+                    answer = input("Код верный? да/нет - ")
+                    if answer == "да":
+                        set_status_done(operation_id)
+                        input("Нажмите Enter для продолжения...")
+                        break
+                    else:
+                        answer = input("Хотите отменить активацию и вернуть деньги? да/нет: ").lower()
+                        if answer == "да":
+                            requests.get('https://sms-activate.ru/stubs/handler_api.php?api_key={}&action=setStatus&status=8&id={}'.format(api_key, operation_id))
+                            break
+            except KeyboardInterrupt:
+                answer = input("Хотите отменить активацию и вернуть деньги? да/нет: ").lower()
+                if answer == "да":
+                    requests.get('https://sms-activate.ru/stubs/handler_api.php?api_key={}&action=setStatus&status=8&id={}'.format(api_key, operation_id))
+                    break
+    elif inp == "4":
         exit()
