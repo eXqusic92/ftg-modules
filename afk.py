@@ -16,7 +16,7 @@ class AFKMod(loader.Module):
                "gone": "<b>Ушёл в закат</b>",
                "back": "<b>Я родился</b>",
                "afk": "<b>Не пиши мне, я афк</b>",
-               "afk_reason": "<b>Не пиши мне, я афк/nПричина: </b> <i>{}</i>"}
+               "afk_reason": "<b>Не пиши мне, я афк\nПричина: </b> <i>{}</i>"}
 
     async def client_ready(self, client, db):
         self._db = db
