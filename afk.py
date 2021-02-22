@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 class AFKMod(loader.Module):
     """Provides a message saying that you are unavailable"""
     strings = {"name": "AFK",
-               "gone": "<b>I'm goin' AFK</b>",
-               "back": "<b>I'm no longer AFK</b>",
-               "afk": "<b>I'm AFK right now (since {} ago).</b>",
-               "afk_reason": "<b>I'm AFK right now (since {} ago).\nReason:</b> <i>{}</i>"}
+               "gone": "<b>Ушёл в закат</b>",
+               "back": "<b>Я родился</b>",
+               "afk": "<b>Не пиши мне, я афк</b>",
+               "afk_reason": "<b>Не пиши мне, я афк\nПричина: </b> <i>{}</i>"}
 
     async def client_ready(self, client, db):
         self._db = db
@@ -52,9 +52,9 @@ class AFKMod(loader.Module):
             ratelimit = self._db.get(__name__, "ratelimit", [])
             if utils.get_chat_id(message) in ratelimit:
                 return
-            else:
-                self._db.setdefault(__name__, {}).setdefault("ratelimit", []).append(utils.get_chat_id(message))
-                self._db.save()
+            # else:
+                # self._db.setdefault(__name__, {}).setdefault("ratelimit", []).append(utils.get_chat_id(message))
+                # self._db.save()
             user = await utils.get_user(message)
             if user.is_self or user.bot or user.verified:
                 logger.debug("User is self, bot or verified.")
@@ -65,9 +65,9 @@ class AFKMod(loader.Module):
             gone = datetime.datetime.fromtimestamp(self._db.get(__name__, "gone")).replace(microsecond=0)
             diff = now - gone
             if afk_state is True:
-                ret = self.strings("afk", message).format(diff)
+                ret = self.strings("afk", message)
             elif afk_state is not False:
-                ret = self.strings("afk_reason", message).format(diff, afk_state)
+                ret = self.strings("afk_reason", message).format(afk_state)
             await utils.answer(message, ret, reply_to=message)
 
     def get_afk(self):

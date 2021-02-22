@@ -50,6 +50,6 @@ class TagallMod(loader.Module):
             await event.reply(mentions)
             await event.delete()
         except Exception as e:
-            await event.client.send_message(event.chat_id, f'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
+            # await event.client.send_message(event.chat_id, f'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
             time.sleep(0.2)
             # await event.respond("анрег")

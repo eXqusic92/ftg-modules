@@ -9,7 +9,6 @@ client = TelegramClient('anon', api_id, api_hash)
 
 
 async def main():
-    text = 'Привет) Давай с нами играть в мафию? У нас очень веселая компания, честно)'
     limit = 350
 
     salieri = await client.get_entity(-1001430533627)
@@ -38,7 +37,7 @@ async def main():
                 print('bot')
                 continue
             else:
-                await client.send_message(usr, text)
+                await client(InviteToChannelRequest(salieri, [i]))
                 print('1')
         except Exception as e:
             print(e)
