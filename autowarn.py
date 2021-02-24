@@ -40,52 +40,52 @@ class WelcomeMod(loader.Module):
         souch_ids = [1564155100, 504225012]
         vlad_id = 508169464
         if not sud_state:
-            if 'пообещал' in message.raw_text.split():
-                uid = message.entities[1].user_id
-            else:
-                uid = message.entities[0].user_id
-            userent = await message.client.get_entity(uid)
-            if userent.last_name is None:
-                username = str(userent.first_name)
-            elif userent.last_name and userent.first_name:
-                username = str(userent.first_name) + " " + str(userent.last_name)
-            else:
-                username = str(userent.last_name)
             chatid = message.chat_id
             fromid = message.from_id
 
             if chatid == -1001430533627 and (fromid == 761250017 or fromid == 1044037207):
                 if ('бу-у-у-у-ду' in message.raw_text.split()) or ('пообещал' in message.raw_text.split()):
-                    if uid in admin_ids:
-                        await message.reply("!Вот петушара, админ, ещё и АФКшит...")
-                        await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    elif uid in souch_ids:
-                        await message.reply("!Уважаю")
-                        await message.client.send_message(1361873517, f"Респект и уважение этому человеку <a href=\"tg://user?id={str(uid)}\">{username}</a>\n\n{timestamp}")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    elif uid == vlad_id:
-                        await message.reply("!Ладно")
-                        await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball\n{timestamp}")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                    else:
-                        await message.client.send_message(-1001430533627, f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
-                        await message.client.send_message(1361873517, f"<b>[AFK/Mute] </b>Выдал мут <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
-                        await asyncio.sleep(0.2)
-                        await message.respond("анрег")
-                        cnt = self._db.get("warns", "afk", 0)
-                        self._db.set("warns", "afk", cnt+1)
+                    for usr in message.entities:
+                        if hasattr(usr, 'user_id'):
+                            uid = usr.user_id
+                            userent = await message.client.get_entity(uid)
+                            if userent.last_name is None:
+                                username = str(userent.first_name)
+                            elif userent.last_name and userent.first_name:
+                                username = str(userent.first_name) + " " + str(userent.last_name)
+                            else:
+                                username = str(userent.last_name)
 
-                        afk_list = self._db.get("afk", "warns")
-                        if username in afk_list:
-                            afk_list[username] = afk_list.get(username) + 1
-                            self._db.set("afk", "warns", afk_list)
-                        else:
-                            afk_list = {**afk_list, username: 1}
-                            self._db.set("afk", "warns", afk_list)
+                            if uid in admin_ids:
+                                await message.reply("!Вот петушара, админ, ещё и АФКшит...")
+                                await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
+                                await asyncio.sleep(0.2)
+                                await message.respond("анрег")
+                            elif uid in souch_ids:
+                                await message.reply("!Уважаю")
+                                await message.client.send_message(1361873517, f"Респект и уважение этому человеку <a href=\"tg://user?id={str(uid)}\">{username}</a>\n\n{timestamp}")
+                                await asyncio.sleep(0.2)
+                                await message.respond("анрег")
+                            elif uid == vlad_id:
+                                await message.reply("!Ладно")
+                                await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball\n{timestamp}")
+                                await asyncio.sleep(0.2)
+                                await message.respond("анрег")
+                            else:
+                                await message.client.send_message(-1001430533627, f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+                                await message.client.send_message(1361873517, f"<b>[AFK/Mute] </b>Выдал мут <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
+                                await asyncio.sleep(0.2)
+                                await message.respond("анрег")
+                                cnt = self._db.get("warns", "afk", 0)
+                                self._db.set("warns", "afk", cnt+1)
+
+                                afk_list = self._db.get("afk", "warns")
+                                if username in afk_list:
+                                    afk_list[username] = afk_list.get(username) + 1
+                                    self._db.set("afk", "warns", afk_list)
+                                else:
+                                    afk_list = {**afk_list, username: 1}
+                                    self._db.set("afk", "warns", afk_list)
 
                 if 'гнетущей' in message.raw_text.split():
                     msgs = []
