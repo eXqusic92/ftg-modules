@@ -13,4 +13,4 @@ class ZazDeleteMod(loader.Module):
         if message.raw_text.lower() == "бот!" and fromid in known_id:
             await message.reply("Приветствую, мой господин!🤝")
         elif message.raw_text.lower() == "бот!" and fromid not in known_id:
-            await message.reply("Ты че за ноунейм нах, отвали")
+            await message.reply("Ты че за ноунейм нах, съебни пока не дал пиздов тебе")
