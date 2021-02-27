@@ -44,7 +44,7 @@ class WelcomeMod(loader.Module):
             fromid = message.from_id
 
             if chatid == -1001170767846 and fromid == 761250017:
-                if ('убит' in message.raw_text.split()) and ("гостях" not in message.raw_text.split):
+                if ('убит' in message.raw_text.split()) and ("гостях" not in message.raw_text.split()):
                     if message.raw_text.split()[5] in pass_roles:
                         return
                     for usr in message.entities:
