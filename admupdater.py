@@ -4,7 +4,7 @@ import asyncio
 
 @loader.tds
 class admupdateMod(loader.Module):
-    """Обновление списка админов Bar of Don Salieri"""
+    """Обновление списка админов Friends Mafia"""
     strings = {"name": "AdmUpdate"}
 
     async def client_ready(self, client, db):
