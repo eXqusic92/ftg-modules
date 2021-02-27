@@ -62,7 +62,7 @@ class WelcomeMod(loader.Module):
                                 await message.client.send_message(-1001177665247, f"Админ <a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк\n\n{timestamp}")
                             else:
                                 await message.client.send_message(-1001170767846, f"!warn {str(uid)} AFK")
-                                await message.client.send_message(-1001177665247, f"<b>[AFK/Mute] </b>Выдал мут <a href=\"tg://user?id={str(uid)}\">{username}</a> за афк\n\n{timestamp}")
+                                await message.client.send_message(-1001177665247, f"<b>[AFK/Mute] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> за афк\n\n{timestamp}")
                                 cnt = self._db.get("warns", "afk", 0)
                                 self._db.set("warns", "afk", cnt+1)
 
