@@ -83,7 +83,7 @@ class WelcomeMod(loader.Module):
                     if msgs.count(message.raw_text) > 1:
                         pass
                     else:
-                        if message.raw_text.split[::-1][0] in pass_roles_1:
+                        if message.raw_text.split()[::-1][0] in pass_roles_1:
                             return
                         uid = message.entities[0].user_id
                         userent = await message.client.get_entity(uid)
