@@ -14,8 +14,13 @@ class WelcomeMod(loader.Module):
         state = self._db.get("AutoWarn", "sud_state", False)
         if state:
             self._db.set("AutoWarn", "sud_state", False)
+            await message.respond("<b>Автоварн включен!</b>")
+            await message.delete()
             return
         self._db.set("AutoWarn", "sud_state", True)
+        await message.respond("<b>Автоварн выключен!</b>")
+        await message.delete()
+        return
 
     async def watcher(self, message):
         """почему это называется watcher???"""
