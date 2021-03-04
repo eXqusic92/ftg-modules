@@ -9,14 +9,16 @@ class WelcomeMod(loader.Module):
     async def client_ready(self, client, db):
         self._db = db
 
+    async def statecmd(self, message):
+        """.state переключатель режима судной ночи(вкл/выкл автоварн короче)"""
+        state = self._db.get("AutoWarn", "sud_state", False)
+        if state:
+            self._db.set("AutoWarn", "sud_state", False)
+            return
+        self._db.set("AutoWarn", "sud_state", True)
+
     async def watcher(self, message):
         """почему это называется watcher???"""
-
-        # time = datetime.datetime.now().time().replace(microsecond=0)
-        # date = datetime.datetime.now().day
-        # month = datetime.datetime.now().month
-        # year = datetime.datetime.now().year
-        # timestamp = f'{time} | {date}.{month}.{year}'
 
         pass_roles = ["Мирный", "Счастливчик", "Санта", "Маньяк", "Самоубийца"]
         pass_roles_1 = ["житель", "Счастливчик", "Санта", "Маньяк", "Самоубийца"]
@@ -24,7 +26,10 @@ class WelcomeMod(loader.Module):
 
         chatid = message.chat_id
         fromid = message.from_id
+        sud_state = self._db.get("AutoWarn", "sud_state", False)
 
+        if sud_state:
+            return
         if chatid == -1001170767846 and fromid == 761250017:
             if ('убит' in message.raw_text.split()) and ("гостях" not in message.raw_text.split()):
                 if message.raw_text.split()[5] in pass_roles:
