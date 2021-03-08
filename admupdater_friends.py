@@ -18,7 +18,7 @@ class admupdateMod(loader.Module):
         async for user in event.client.iter_participants(event.chat_id, limit=50):
             admins.append(user.id)
         admins.remove(1564155100)
-        admins.remove(1695155911)
+        admins.remove(1635765494)
         self._db.set("admins", "ids", admins)
         await event.respond("<b>Список админов успешно обновлён!</b>")
 
