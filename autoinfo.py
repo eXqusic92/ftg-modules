@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 @loader.tds
 class AutoInfoMod(loader.Module):
     """Provides a message saying that you are unavailable"""
-    strings = {"name": "AutoInfo",}
+    strings = {"name": "AutoInfo"}
 
     async def client_ready(self, client, db):
         self._db = db
