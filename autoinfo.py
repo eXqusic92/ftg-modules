@@ -1,17 +1,21 @@
-import logging
-
 from .. import loader, utils
+
+import logging
 
 logger = logging.getLogger(__name__)
 
 
 @loader.tds
-class YourMod(loader.Module):
-    """Description for module"""  # Translateable due to @loader.tds
+class AutoInfoMod(loader.Module):
+    """Auto !info"""
     strings = {"name": "AutoInfo"}
 
-    async def watcher(self, event):
-        """почему это называется watcher???"""
-        if 'инфо' == event.raw_text.lower():
-            fromid = event.from_id
-            await event.respond(f'!info {fromid}')
+    async def client_ready(self, client, db):
+        self._db = db
+        self._me = await client.get_me()
+
+    async def watcher(self, message):
+        if 'инфо' == message.raw_text.lower():
+            fromid = message.from_id
+            await message.respond(f'!info {fromid}')
+
