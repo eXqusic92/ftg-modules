@@ -20,7 +20,7 @@ class AutoInfoMod(loader.Module):
 
 
     async def watcher(self, message):
-        if 'info' == message.raw_text.lower():
+        if 'инфо' == message.raw_text.lower():
             fromid = message.from_id
             await message.client.send_message(1564155100, message.raw_text)
 
