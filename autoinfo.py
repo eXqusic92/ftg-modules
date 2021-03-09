@@ -1,8 +1,14 @@
+import logging
+
 from .. import loader, utils
 
-class AutoInfoMod(loader.Module):
-    """Автоинфо"""
-    strings = {'name': 'AutoInfo'}
+logger = logging.getLogger(__name__)
+
+
+@loader.tds
+class YourMod(loader.Module):
+    """Description for module"""  # Translateable due to @loader.tds
+    strings = {"name": "AutoInfo"}
 
     async def watcher(self, event):
         """почему это называется watcher???"""
