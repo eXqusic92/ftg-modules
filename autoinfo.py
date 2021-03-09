@@ -18,6 +18,6 @@ class AutoInfoMod(loader.Module):
         await message.respond("on")
     
     async def watcher(self, message):
-        if 'инфо' == message.raw_text.lower():
+        if 'info' == message.raw_text.lower():
             fromid = message.from_id
             await utils.answer(message, f'!info {fromid}', reply_to=message)
