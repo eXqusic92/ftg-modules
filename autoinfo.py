@@ -23,10 +23,10 @@ class AutoInfoMod(loader.Module):
         if 'инфо' == message.raw_text.lower():
             reply = await message.get_reply_message()
             fromid = message.from_id
-            if not reply:
-                await message.respond(f"!info {fromid}")
+            if reply:
+                await message.respond(f"!info {reply.from_id}")
                 return
-            await message.respond(f"!info {reply.from_id}")
+            await message.respond(f"!info {message.from_id}")
 
 
 
