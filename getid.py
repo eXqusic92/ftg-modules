@@ -14,7 +14,7 @@ class AutoMessageMod(loader.Module):
             count = 200
             text = ""
             cnt = 0
-        async for user in message.client.iter_participants(message.chat_id, limit=count, aggresssive=True):
+        async for user in message.client.iter_participants(message.chat_id, limit=count, aggressive=True):
             text += str(user.id) + " " + str(user.first_name) + "\n"
             cnt += 1
             if cnt > 20:
