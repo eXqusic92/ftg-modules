@@ -20,4 +20,6 @@ class AutoMessageMod(loader.Module):
             if cnt > 20:
                 await message.client.send_message("me", text)
                 cnt = 0
+                text = ""
+        await message.client.send_message("me", text)
         await message.delete()
