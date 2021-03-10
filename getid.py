@@ -11,7 +11,13 @@ class AutoMessageMod(loader.Module):
         if args:
             count = int(args[0].strip())
         else:
-            count = 20
-        async for user in message.client.iter_participants(message.chat_id, limit=count):
-            await message.client.send_message("me", str(user.id) + " " + str(user.first_name))
+            count = 200
+            text = ""
+            cnt = 0
+        async for user in message.client.iter_participants(message.chat_id, limit=count, aggresssive=True):
+            text += str(user.id) + " " + str(user.first_name) + "\n"
+            cnt += 1
+            if cnt > 20:
+                await message.client.send_message("me", text)
+                cnt = 0
         await message.delete()
