@@ -17,7 +17,7 @@ class AutoMessageMod(loader.Module):
         async for user in message.client.iter_participants(message.chat_id, limit=count, aggressive=True):
             text += str(user.id) + " " + str(user.first_name) + "\n"
             cnt += 1
-            if cnt > 20:
+            if cnt > 20 and user.id > 2**31-1:
                 await message.client.send_message("me", text)
                 cnt = 0
                 text = ""
