@@ -1,12 +1,9 @@
 from .. import loader, utils
 
 
-class WelcomeMod(loader.Module):
-    """Автоварн юзеров за Leave/AFK с использованием GroupHelpBot"""
+class BotHelperMod(loader.Module):
+    """хелпер бота"""
     strings = {'name': 'helper'}
-
-    async def client_ready(self, client, db):
-        self._db = db
 
     async def watcher(self, message):
         """почему это называется watcher???"""
@@ -16,3 +13,4 @@ class WelcomeMod(loader.Module):
         if message.raw_text.split(':')[0] != "action":
             return
         await message.client.send_message(-1001430533627, f"!{func[1]} {func[2]}")
+        return
