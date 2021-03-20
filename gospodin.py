@@ -1,7 +1,7 @@
 from .. import loader, utils
 
-# known_id = [508169464, 1564155100]
-known_id = [1564155100]
+known_id = [508169464, 1564155100]
+# known_id = [1564155100]
 
 class ZazDeleteMod(loader.Module):
     """Авто-удаление сообщений Зазывала tag-bot"""
@@ -13,14 +13,11 @@ class ZazDeleteMod(loader.Module):
         if message.raw_text.lower() == "бот!" and fromid in known_id:
             await message.reply("Приветствую, мой господин!🤝")
             return
-        elif message.raw_text.lower() == "бот!" and fromid == 1358401183:
-            await message.reply("Приветствую, любимая мать<3")
+        elif message.raw_text.lower() == "бот!" and fromid == 1404776819:
+            await message.reply("Приветик, крошка ;)")
             return
         elif message.raw_text.lower() == "бот!" and fromid == 538677389:
             await message.reply("чо те нада крыса")
-            return
-        elif message.raw_text.lower() == "бот!" and fromid == 508169464:
-            await message.reply("пошел нахуй влад, ты мне больше не господин")
             return
         elif message.raw_text.lower() == "бот!" and fromid not in known_id:
             await message.reply("Ты че за ноунейм нах, съебни пока не дал пиздов тебе")

@@ -21,8 +21,12 @@ class AutoInfoMod(loader.Module):
 
     async def watcher(self, message):
         if 'инфо' == message.raw_text.lower():
+            reply = await message.get_reply_message()
             fromid = message.from_id
-            await message.client.send_message(1564155100, message.raw_text)
+            if reply:
+                await message.respond(f"!info {reply.from_id}")
+                return
+            await message.respond(f"!info {message.from_id}")
 
 
 
