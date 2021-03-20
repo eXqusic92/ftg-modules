@@ -3,7 +3,7 @@ from .. import loader, utils
 
 class BotHelperMod(loader.Module):
     """хелпер бота"""
-    strings = {'name': 'helper'}
+    strings = {'name': 'helperbot'}
 
     async def watcher(self, message):
         """почему это называется watcher???"""
