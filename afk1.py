@@ -16,7 +16,7 @@ class AFKMod(loader.Module):
                "gone": "<b>Ухожу в афк</b>",
                "back": "<b>Я вернулась</b>",
                "afk": "<b>Я сейчас АФК, обязательно отвечу позже :3</b>",
-               "afk_reason": "<b>Я сейчас АФК, обязательно отвечу позже :3</i>"}
+               "afk_reason": "<b>Я сейчас АФК, обязательно отвечу позже :3</b>\n<b>Причина: </><i>{}</i>"}
 
     async def client_ready(self, client, db):
         self._db = db
@@ -67,7 +67,7 @@ class AFKMod(loader.Module):
             if afk_state is True:
                 ret = self.strings("afk", message)
             elif afk_state is not False:
-                ret = self.strings("afk_reason", message)
+                ret = self.strings("afk_reason", message).format(afk_state)
             await utils.answer(message, ret, reply_to=message)
 
     def get_afk(self):
