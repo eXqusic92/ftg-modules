@@ -15,8 +15,8 @@ class AFKMod(loader.Module):
     strings = {"name": "AFK",
                "gone": "<b>Ухожу в афк</b>",
                "back": "<b>Я вернулась</b>",
-               "afk": "<b>Я сейчас АФКб обязательно отвечу позже :3</b>",
-               "afk_reason": "<b>Я сейчас АФКб обязательно отвечу позже :3</i>"}
+               "afk": "<b>Я сейчас АФК, обязательно отвечу позже :3</b>",
+               "afk_reason": "<b>Я сейчас АФК, обязательно отвечу позже :3</i>"}
 
     async def client_ready(self, client, db):
         self._db = db
