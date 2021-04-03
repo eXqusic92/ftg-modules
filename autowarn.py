@@ -60,8 +60,11 @@ class WelcomeMod(loader.Module):
                             if uid in afk_list_ids:
                                 await message.client.send_message(-1001430533627,
                                                                   f"!warn {str(uid)} AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+                                await message.client.send_message(-1001430533627,
+                                                                  f"!mute {str(uid)} 2 hours AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+
                                 await message.client.send_message(1361873517,
-                                                                  f"<b>[AFK/warn] </b>Выдал варн этому чме - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что пидор афкшит, так еще и больше 1 раза за сутки ._.\n\n{timestamp}")
+                                                                  f"<b>[AFK/warn+mute] </b>Выдал варн и мут нахуй этому чме - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что пидор афкшит, так еще и больше 1 раза за сутки ._.\n\n{timestamp}")
                                 # await asyncio.sleep(0.2)
                                 return
                             if uid in admin_ids:
