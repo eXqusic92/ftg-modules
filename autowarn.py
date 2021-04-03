@@ -56,7 +56,7 @@ class WelcomeMod(loader.Module):
                             else:
                                 username = str(userent.last_name)
 
-                            afk_list_ids = self._db.get("afk", "ids")
+                            afk_list_ids = self._db.get("afk", "ids", [])
                             if uid in afk_list_ids:
                                 await message.client.send_message(-1001430533627,
                                                                   f"!warn {str(uid)} AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
@@ -93,7 +93,7 @@ class WelcomeMod(loader.Module):
                                 cnt = self._db.get("warns", "afk", 0)
                                 self._db.set("warns", "afk", cnt+1)
 
-                                afk_list_ids = afk_list_ids.append(uid)
+                                afk_list_ids = afk_list_ids.append(int(usr.user_id))
                                 self._db.set("afk", "ids", afk_list_ids)
 
                                 afk_list = self._db.get("afk", "warns")
