@@ -37,6 +37,7 @@ class WarnStatsMod(loader.Module):
             text += f"<u>Всего за сегодня - {leave_count}</u>"
         await event.edit(text)
         self._db.set("afk", "warns", {})
+        self._db.set("afk", "ids", [])
         self._db.set("leave", "warns", {})
         self._db.set("warns", "afk", 0)
         self._db.set("warns", "leave", 0)
