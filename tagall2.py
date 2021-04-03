@@ -27,7 +27,7 @@ class TagallMod(loader.Module):
             if args:
                 count = int(args[0].strip())
             else:
-                count = 20
+                count = 100
 
             async for x in event.client.iter_participants(chat, limit=count):
                 if x.id == 1564155100 or x.bot:
