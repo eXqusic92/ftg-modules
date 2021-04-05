@@ -113,8 +113,6 @@ class WelcomeMod(loader.Module):
                     if msgs.count(message.raw_text) > 1:
                         pass
                     else:
-                        uid = message.entities[0].user_id
-                        userent = await message.client.get_entity(uid)
                         if userent.last_name is None:
                             username = str(userent.first_name)
                         elif userent.last_name and userent.first_name:
