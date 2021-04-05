@@ -56,17 +56,17 @@ class WelcomeMod(loader.Module):
                             else:
                                 username = str(userent.last_name)
 
-                            afk_list_ids = self._db.get("afk", "ids", [])
-                            if uid in afk_list_ids:
-                                await message.client.send_message(-1001430533627,
-                                                                  f"!warn {str(uid)} AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
-                                await message.client.send_message(-1001430533627,
-                                                                  f"!mute {str(uid)} 2 hours AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
-
-                                await message.client.send_message(1361873517,
-                                                                  f"<b>[AFK/warn+mute] </b>Выдал варн и мут нахуй этому чме - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что пидор афкшит, так еще и больше 1 раза за сутки ._.\n\n{timestamp}")
-                                # await asyncio.sleep(0.2)
-                                return
+                            # afk_list_ids = self._db.get("afk", "ids", [])
+                            # if uid in afk_list_ids:
+                            #     await message.client.send_message(-1001430533627,
+                            #                                       f"!warn {str(uid)} AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+                            #     await message.client.send_message(-1001430533627,
+                            #                                       f"!mute {str(uid)} 2 hours AFK больше одного раза за сутки (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+                            #
+                            #     await message.client.send_message(1361873517,
+                            #                                       f"<b>[AFK/warn+mute] </b>Выдал варн и мут нахуй этому чме - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что пидор афкшит, так еще и больше 1 раза за сутки ._.\n\n{timestamp}")
+                            #     # await asyncio.sleep(0.2)
+                            #     return
                             if uid in admin_ids:
                                 await message.reply("!Вот петушара, админ, ещё и АФКшит...")
                                 await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
@@ -93,8 +93,8 @@ class WelcomeMod(loader.Module):
                                 cnt = self._db.get("warns", "afk", 0)
                                 self._db.set("warns", "afk", cnt+1)
 
-                                afk_list_ids = afk_list_ids.append(int(usr.user_id))
-                                self._db.set("afk", "ids", afk_list_ids)
+                                # afk_list_ids = afk_list_ids.append(int(usr.user_id))
+                                # self._db.set("afk", "ids", afk_list_ids)
 
                                 afk_list = self._db.get("afk", "warns")
                                 if username in afk_list:
