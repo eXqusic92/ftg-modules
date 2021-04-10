@@ -26,10 +26,15 @@ class TagallMod(loader.Module):
 
             if args:
                 count = int(args[0].strip())
+                if count < 200:
+                    aggressive = False
+                else:
+                    aggressive = True
             else:
                 count = 100
+                aggressive = False
 
-            async for x in event.client.iter_participants(chat, limit=count):
+            async for x in event.client.iter_participants(chat, limit=count, aggressive=aggressive):
                 if x.id == 1564155100 or x.bot:
                     continue
                 if text:
