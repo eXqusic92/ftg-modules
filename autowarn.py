@@ -67,7 +67,7 @@ class WelcomeMod(loader.Module):
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
                             elif uid == vlad_id:
-                                await message.reply("!Ладно")
+                                await message.reply("!Снова со своей ламбой играецца, вот и забыл об игре")
                                 await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball\n{timestamp}")
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
@@ -115,8 +115,8 @@ class WelcomeMod(loader.Module):
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         elif uid == vlad_id:
-                            await message.reply("!Ладно")
-                            await message.client.send_message(1361873517, f"Krasav4ik - <a href=\"tg://user?id=\"{str(uid)}\">Влад</a>\n\n{timestamp}")
+                            await message.reply("! Влад зассал потому что против него играют слишком сильные соперники")
+                            await message.client.send_message(1361873517, f"Влад зассал потому что против него играют слишком сильные соперники")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         else:
