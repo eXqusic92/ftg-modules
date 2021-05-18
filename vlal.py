@@ -1,4 +1,5 @@
 from .. import loader, utils
+import random
 
 
 class ZazDeleteMod(loader.Module):
@@ -11,4 +12,5 @@ class ZazDeleteMod(loader.Module):
     async def watcher(self, message):
         """1"""
         if message.raw_text.lower() == 'влал!':
-            await utils.answer(message, await self._db.fetch_asset(3))
+            m = [3, 25, 26]
+            await utils.answer(message, await self._db.fetch_asset(random.choice(m)))
