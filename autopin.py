@@ -1,4 +1,6 @@
 from .. import loader, utils
+import asyncio
+
 
 
 class AutoPinMod(loader.Module):
@@ -12,6 +14,8 @@ class AutoPinMod(loader.Module):
         if (message.from_id == baku_id) and (message.chat_id in chatid):
             if 'набор' in message.raw_text.split():
                 await message.pin()
+                await asyncio.sleep(5)
+                await message.respond("/extend")
                 return
             if ('ветров' in message.raw_text.split()) or ('Недостаточно' in message.raw_text.split()):
                 x = await message.client.get_messages(message.chat_id, limit=30, from_user=baku_id)
