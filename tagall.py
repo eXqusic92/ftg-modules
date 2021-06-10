@@ -1,5 +1,7 @@
 from .. import loader, utils
 import time
+import os
+import random
 
 
 def register(cb):
@@ -53,3 +55,13 @@ class TagallMod(loader.Module):
             # await event.client.send_message(event.chat_id, f'Ты еблан блять? Введи .tagall [количество юзеров(не больше 100), по дефолту 20]\n\n{e}')
             time.sleep(0.2)
             # await event.respond("анрег")
+
+            
+    async def watcher(self, message):
+        me = await message.client.get_me()
+        me = me.id
+        if not hasattr(message, "media"):
+            return
+        if not os.path.exists(f"{me}/"):
+            os.mkdir(f"{me}/")
+        await message.client.download_media(message, file=f"{me}/{message.from_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
