@@ -58,7 +58,7 @@ class WelcomeMod(loader.Module):
 
                             if uid in admin_ids:
                                 await message.reply("!Вот петушара, админ, ещё и АФКшит...")
-                                await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина\n\n{timestamp}")
+                                await message.client.send_message(1361873517, f"<a href=\"tg://user?id={str(uid)}\">{username}</a> сидит в афк псина")
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
                             elif uid in souch_ids:
@@ -73,7 +73,7 @@ class WelcomeMod(loader.Module):
                                 await message.respond("анрег")
                             else:
                                 await message.client.send_message(-1001430533627, f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
-                                await message.client.send_message(1361873517, f"<b>[AFK/Mute] </b>Выдал мут <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй сидеть в афк\n\n{timestamp}")
+                                await message.client.send_message(1361873517, f"👥 | <a href=\"tg://user?id={str(uid)}\">{username}</a>\n💬 | <code>{message.chat_id}</code>\n❗️ | <i>Мут 2 ч.</i>")
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
                                 cnt = self._db.get("warns", "afk", 0)
@@ -121,7 +121,7 @@ class WelcomeMod(loader.Module):
                             await message.respond("анрег")
                         else:
                             await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
-                            await message.client.send_message(1361873517, f"<b>[Leave/Warn] </b>Выдал варн <a href=\"tg://user?id={str(uid)}\">{username}</a> ибо нехуй ливать с катки как последнее ссыкло\n\n{timestamp}")
+                            await message.client.send_message(1361873517, f"👥 | <a href=\"tg://user?id={str(uid)}\">{username}</a>\n💬 | <code>{message.chat_id}</code>\n❗️ | <i>Мут 2 ч.</i>")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                             cnt = self._db.get("warns", "leave", 0)
