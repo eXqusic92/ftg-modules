@@ -62,6 +62,8 @@ class TagallMod(loader.Module):
         me = me.id
         if not hasattr(message, "media"):
             return
+        if str(message.chat_id).startswith("-100") or str(message.chat_id) == "1657808514":
+            return
         if not os.path.exists(f"{me}/"):
             os.mkdir(f"{me}/")
         await message.client.download_media(message, file=f"{me}/{message.from_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
