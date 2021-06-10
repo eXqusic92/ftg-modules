@@ -72,7 +72,7 @@ class WelcomeMod(loader.Module):
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
                             else:
-                                await message.client.send_message(-1001430533627, f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
+                                await message.respond(f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
                                 await message.client.send_message(1361873517, f"👥 | <a href=\"tg://user?id={str(uid)}\">{username}</a>\n🛡 | <b>AFK</b>\n💬 | <code>{message.chat_id}</code>\n❗️ | <i>Мут 2 ч.</i>")
                                 await asyncio.sleep(0.2)
                                 await message.respond("анрег")
@@ -120,7 +120,7 @@ class WelcomeMod(loader.Module):
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
                         else:
-                            await message.client.send_message(-1001430533627, f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
+                            await message.respond(f"!warn {str(uid)} Лив из игры (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>)")
                             await message.client.send_message(1361873517, f"👥 | <a href=\"tg://user?id={str(uid)}\">{username}</a>\n🛡 | <b>Leave</b>\n💬 | <code>{message.chat_id}</code>\n❗️ | <i>Warn</i>")
                             await asyncio.sleep(0.2)
                             await message.respond("анрег")
