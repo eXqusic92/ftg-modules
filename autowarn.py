@@ -43,7 +43,7 @@ class WelcomeMod(loader.Module):
             chatid = message.chat_id
             fromid = message.from_id
 
-            if chatid == -1001430533627 and (fromid == 761250017 or fromid == 1044037207):
+            if ((chatid == -1001430533627) or (chatid == -1001170767846)) and (fromid == 761250017 or fromid == 1044037207):
                 if ('бу-у-у-у-ду' in message.raw_text.split()) or ('пообещал' in message.raw_text.split()):
                     for usr in message.entities:
                         if hasattr(usr, 'user_id'):
