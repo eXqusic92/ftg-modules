@@ -7,4 +7,5 @@ class AutoMessageMod(loader.Module):
 
     async def lcmd(self, message):
         """???"""
-        await message.respond(f"http://t.me/salieribar_bot?start={message.chat_id}\n\n С каждого твинка по этой ссылке перейди пж и нажми старт")
+        await message.respond(f"http://t.me/salieribar_bot?start={message.chat_id}\n\nС каждого твинка по этой ссылке перейди пж и нажми старт")
+        await message.delete()
