@@ -9,7 +9,7 @@ class ZazDeleteMod(loader.Module):
 
     async def watcher(self, message):
         """Авто-удаление сообщений Зазывала tag-bot"""
-        fromid = message.from_id
+        fromid = message.sender_id
         if message.raw_text.lower() == "бот!" and fromid in known_id:
             await message.reply("Приветствую, мой господин!🤝")
             return
