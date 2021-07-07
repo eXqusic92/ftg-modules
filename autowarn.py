@@ -41,7 +41,7 @@ class WelcomeMod(loader.Module):
         vlad_id = 508169464
         if not sud_state:
             chatid = message.chat_id
-            fromid = message.from_id
+            fromid = message.sender_id
 
             if ((chatid == -1001430533627) or (chatid == -1001170767846)) and (fromid == 761250017 or fromid == 1044037207):
                 if ('бу-у-у-у-ду' in message.raw_text.split()) or ('пообещал' in message.raw_text.split()):
