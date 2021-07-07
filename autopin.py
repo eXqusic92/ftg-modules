@@ -11,7 +11,7 @@ class AutoPinMod(loader.Module):
         """почему это называется watcher???"""
         baku_id = 1044037207
         chatid = [-1001430533627, -1001170767846]
-        if (message.from_id == baku_id) and (message.chat_id in chatid):
+        if (message.sender_id == baku_id) and (message.chat_id in chatid):
             if 'набор' in message.raw_text.split():
                 await message.pin()
                 await asyncio.sleep(5)
