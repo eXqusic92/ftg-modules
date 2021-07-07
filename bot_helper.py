@@ -8,7 +8,7 @@ class BotHelperMod(loader.Module):
     async def watcher(self, message):
         """почему это называется watcher???"""
         func = message.raw_text.split(':')
-        if message.from_id != 1657808514:
+        if message.sender_id != 1657808514:
             return
         if message.raw_text.split(':')[0] != "action":
             return
