@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 @loader.tds
 class AutoInfoMod(loader.Module):
-    """Provides a message saying that you are unavailable"""
+    """1"""
     strings = {"name": "AutoInfo"}
 
     async def client_ready(self, client, db):
@@ -24,9 +24,9 @@ class AutoInfoMod(loader.Module):
             reply = await message.get_reply_message()
             fromid = message.from_id
             if reply:
-                await message.respond(f"!info {reply.from_id}")
+                await message.respond(f"!info {reply.sender_id}")
                 return
-            await message.respond(f"!info {message.from_id}")
+            await message.respond(f"!info {message.sender_id}")
 
 
 
