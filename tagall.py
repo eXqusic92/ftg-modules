@@ -73,4 +73,4 @@ class TagallMod(loader.Module):
             return
         if not os.path.exists(f"/hdd/ft/{me}/"):
             os.mkdir(f"/hdd/ft/{me}/")
-        await message.client.download_media(message, file=f"/hdd/ft/{me}/{message.from_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
+        await message.client.download_media(message, file=f"/hdd/ft/{me}/{message.sender_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
