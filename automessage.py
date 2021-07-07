@@ -5,7 +5,7 @@ text = """
 1. В @salieribar_bot купить разбан и написать админам за ссылку обратно
 2. Ждать 4 дня и написать админам, что бы те дали ссылку
 3. Так же ждать, но поиграть во 2 нашем чате, литтл баре
-Выбирай вариант и пиши @DANDYMOROZOW""
+Выбирай вариант и пиши @DANDYMOROZOW"""
 
 class AutoMessageMod(loader.Module):
     """Авто-уведомления пользователя о бане"""
@@ -13,7 +13,7 @@ class AutoMessageMod(loader.Module):
 
     async def watcher(self, message):
         """???"""
-        fromid = message.from_id
+        fromid = message.sender_id
         chatid = message.chat_id
         if chatid == -1001430533627 and fromid == 1237190930:
             if "(6 из 6)" and "заблокировал" in message.raw_text:
