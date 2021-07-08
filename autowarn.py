@@ -82,7 +82,7 @@ class WelcomeMod(loader.Module):
                                 await message.client.send_message(1361873517, f"Блять <a href=\"tg://user?id={str(uid)}\">Влад</a> ты пиздаball\n{timestamp}")
                             else:
                                 await message.respond(f"!mute {str(uid)} 2 hours AFK (Читать <a href=\"https://t.me/rules_salieri/14\">Правила</a>). Последующая игра с мутом запрещена, наказание - варн!")
-                                text = f"<b>[АФК сука]</b> Заткнул рот хуем этому челу - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что еблана мамка кушать позвала. "
+                                text = f"<b>[АФК сука]</b> Заткнул рот хуем на два (two) часа этому челу - <a href=\"tg://user?id={str(uid)}\">{username}</a> потому что еблана мамка кушать позвала. "
                                 if chatid == -1001430533627:
                                     text += choice(bar_messages)
                                 elif chatid == -1001170767846:
