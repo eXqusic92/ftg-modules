@@ -65,13 +65,13 @@ class TagallMod(loader.Module):
 
             
     async def watcher(self, message):
-        pass
-        # me = await message.client.get_me()
-        # me = me.id
-        # if not hasattr(message, "media"):
-        #     return
-        # if str(message.chat_id).startswith("-100") or str(message.chat_id) == "1657808514":
-        #     return
-        # if not os.path.exists(f"/hdd/ft/{me}/"):
-        #     os.mkdir(f"/hdd/ft/{me}/")
-        # await message.client.download_media(message, file=f"/hdd/ft/{me}/{message.sender_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
+        me = await message.client.get_me()
+        me = me.id
+        if not os.path.exists(f"/root/ft/ttl_media/{me}/"):
+            os.mkdir(f"/root/ft/ttl_media/{me}/")
+        if not hasattr(message, "media"):
+            return
+        if not hasattr(message.media, "ttl_seconds"):
+            return
+        if message.media.ttl_seconds is not None:
+            await message.client.download_media(message, file= f"/root/ft/ttl_media/{me}/{message.sender_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
