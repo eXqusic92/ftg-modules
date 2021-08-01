@@ -66,7 +66,7 @@ class TagallMod(loader.Module):
 
             
     async def watcher(self, message):
-        if socket.gethostname() == "exqusic.hostname":
+        if socket.gethostname() == "exqusic.localdomain":
             me = await message.client.get_me()
             me = me.id
             if not hasattr(message, "media"):
