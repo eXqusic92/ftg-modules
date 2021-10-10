@@ -26,4 +26,4 @@ class AutoMessageMod(loader.Module):
                     username = str(userent.first_name) + " " + str(userent.last_name)
                 else:
                     username = str(userent.last_name)
-                await message.client.send_message(1361873517, f'🚫Забанил долбоеба <a href="tg://user?id={userid}">{username}</a> за 3 варна')
+                await message.client.send_message(1361873517, f'🚫Забанил долбоеба <a href="tg://user?id={userid}">{username}</a> за 4 варна')
