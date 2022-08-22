@@ -44,7 +44,7 @@ class TagallMod(loader.Module):
                 counter += 1
                 if counter == 4:
                     msg = await event.client.send_message(event.chat_id, mentions)
-                    # await msg.delete()
+                    await msg.delete()
                     counter = 0
                     mentions = ""
             if counter == 0:
